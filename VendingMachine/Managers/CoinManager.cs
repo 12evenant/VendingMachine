@@ -8,16 +8,29 @@ namespace VendingMachine.Managers
 {
     public class CoinManager
     {
-        #region Nickel Contants
-        private const double nickelWeight = 5.00;
-        private const double nickelDiameter = 21.21;
+        #region Nickel Constants
+
+        private const double _nickelWeight = 5.00;
+        private const double _nickelDiameter = 21.21;
+
+        #endregion
+
+        #region Dime Constants
+
+        private const double _dimeWeight = 2.268;
+        private const double _dimeDiameter = 17.9;
+
         #endregion
 
         public CoinType Identify(double weight, double diameter)
         {
-            if (weight == nickelWeight && diameter == nickelDiameter)
+            if (weight == _nickelWeight && diameter == _nickelDiameter)
             {
                 return CoinType.Nickel;
+            }
+            if (weight == _dimeWeight && diameter == _dimeDiameter)
+            {
+                return CoinType.Dime;
             }
             return CoinType.Unacceptable;
         }
