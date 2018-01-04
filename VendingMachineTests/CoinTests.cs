@@ -20,5 +20,15 @@ namespace VendingMachineTests
             Assert.Equal(CoinType.Nickel,coinType);
         }
 
+        [Fact]
+        public void WhenDimeIsInsertedTheCoinIsRecognized()
+        {
+            CoinManager coinManager = new CoinManager();
+
+            CoinType coinType = coinManager.Identify(2.268, 17.9);
+
+            Assert.Equal(CoinType.Dime, coinType);
+        }
+
     }
 }
