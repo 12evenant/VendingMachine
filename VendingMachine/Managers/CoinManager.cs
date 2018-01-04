@@ -8,9 +8,9 @@ namespace VendingMachine.Managers
 {
     public class CoinManager
     {
-        public CoinType Identify(double weight)
+        public CoinType Identify(double weight, double diameter)
         {
-            if (weight == 5.00)
+            if (weight == 5.00 && diameter == 21.21)
             {
                 return CoinType.Nickel;
             }
