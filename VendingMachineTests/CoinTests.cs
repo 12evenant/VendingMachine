@@ -7,12 +7,16 @@ namespace VendingMachineTests
 {
     public class CoinTests
     {
+        protected CoinManager coinManager;
+
+        public CoinTests()
+        {
+            coinManager = new CoinManager();
+        }
+
         [Fact]
         public void WhenNickelIsInsertedTheCoinIsRecognized()
         {
-            //arrange 
-            CoinManager coinManager = new CoinManager();
-
             //act
             CoinType coinType = coinManager.Identify(5.00, 21.21);
 
@@ -23,8 +27,6 @@ namespace VendingMachineTests
         [Fact]
         public void WhenDimeIsInsertedTheCoinIsRecognized()
         {
-            CoinManager coinManager = new CoinManager();
-
             CoinType coinType = coinManager.Identify(2.268, 17.9);
 
             Assert.Equal(CoinType.Dime, coinType);
@@ -33,8 +35,6 @@ namespace VendingMachineTests
         [Fact]
         public void WhenQuarterIsInsertedTheCoinIsRecognized()
         {
-            CoinManager coinManager = new CoinManager();
-
             CoinType coinType = coinManager.Identify(5.670, 24.26);
 
             Assert.Equal(CoinType.Quarter, coinType);
@@ -43,8 +43,6 @@ namespace VendingMachineTests
         [Fact]
         public void WhenPennyIsInsertedTheCoinIsRecognized()
         {
-            CoinManager coinManager = new CoinManager();
-
             CoinType coinType = coinManager.Identify(3.11, 19.05);
 
             Assert.Equal(CoinType.Unacceptable, coinType);
