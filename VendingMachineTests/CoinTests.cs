@@ -1,6 +1,7 @@
 ﻿using System;
+using VendingMachine;
 using Xunit;
-
+using VendingMachine.Managers;
 
 namespace VendingMachineTests
 {
@@ -16,7 +17,7 @@ namespace VendingMachineTests
             CoinType coinType = coinManager.Identify(5.00);
 
             //assert
-            Assert.Equal(coinType,CoinType.Nickel);
+            Assert.Equal(CoinType.Nickel,coinType);
 
         }
     }
