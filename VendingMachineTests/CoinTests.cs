@@ -40,5 +40,14 @@ namespace VendingMachineTests
             Assert.Equal(CoinType.Quarter, coinType);
         }
 
+        [Fact]
+        public void WhenPennyIsInsertedTheCoinIsRecognized()
+        {
+            CoinManager coinManager = new CoinManager();
+
+            CoinType coinType = coinManager.Identify(3.11, 19.05);
+
+            Assert.Equal(CoinType.Unacceptable, coinType);
+        }
     }
 }
