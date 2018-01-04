@@ -10,7 +10,11 @@ namespace VendingMachine.Managers
     {
         public CoinType Identify(double weight)
         {
-            throw new NotImplementedException();
+            if (weight == 5.00)
+            {
+                return CoinType.Nickel;
+            }
+            return CoinType.Unacceptable;
         }
     }
 }
