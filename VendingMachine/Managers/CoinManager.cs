@@ -22,6 +22,13 @@ namespace VendingMachine.Managers
 
         #endregion
 
+        #region Quarter Constants
+
+        private const double _quarterWeight = 5.670;
+        private const double _quarterDiameter = 24.26;
+
+        #endregion
+
         public CoinType Identify(double weight, double diameter)
         {
             if (weight == _nickelWeight && diameter == _nickelDiameter)
@@ -31,6 +38,10 @@ namespace VendingMachine.Managers
             if (weight == _dimeWeight && diameter == _dimeDiameter)
             {
                 return CoinType.Dime;
+            }
+            if (weight == _quarterWeight && diameter == _quarterDiameter)
+            {
+                return CoinType.Quarter;
             }
             return CoinType.Unacceptable;
         }
