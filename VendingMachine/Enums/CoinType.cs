@@ -9,6 +9,7 @@ namespace VendingMachine
     public enum CoinType
     {
         Nickel,
+        Dime,
         Unacceptable
     }
 }
