@@ -10,6 +10,7 @@ namespace VendingMachine
     {
         Nickel,
         Dime,
+        Quarter,
         Unacceptable
     }
 }
