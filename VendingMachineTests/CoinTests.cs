@@ -30,5 +30,15 @@ namespace VendingMachineTests
             Assert.Equal(CoinType.Dime, coinType);
         }
 
+        [Fact]
+        public void WhenQuarterIsInsertedTheCoinIsRecognized()
+        {
+            CoinManager coinManager = new CoinManager();
+
+            CoinType coinType = coinManager.Identify(5.670, 24.26);
+
+            Assert.Equal(CoinType.Quarter, coinType);
+        }
+
     }
 }
