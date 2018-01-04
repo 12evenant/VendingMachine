@@ -14,11 +14,11 @@ namespace VendingMachineTests
             CoinManager coinManager = new CoinManager();
 
             //act
-            CoinType coinType = coinManager.Identify(5.00);
+            CoinType coinType = coinManager.Identify(5.00, 21.21);
 
             //assert
             Assert.Equal(CoinType.Nickel,coinType);
-
         }
+
     }
 }
