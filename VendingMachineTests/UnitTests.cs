@@ -1,14 +1,10 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace VendingMachineTests
 {
-    [TestClass]
-    public class UnitTest1
+    public class UnitTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+
     }
 }
