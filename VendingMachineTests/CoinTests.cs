@@ -14,38 +14,16 @@ namespace VendingMachineTests
             coinManager = new CoinManager();
         }
 
-        [Fact]
-        public void WhenNickelIsInsertedTheCoinIsRecognized()
+        [Theory]
+        [InlineData(CoinType.Nickel, 5.00, 21.21)]
+        [InlineData(CoinType.Dime, 2.268, 17.9)]
+        [InlineData(CoinType.Quarter, 5.670, 24.26)]
+        [InlineData(CoinType.Unacceptable, 3.11, 19.05)]
+        public void WhenValidCoinIsInsertedTheCoinIsRecognized(CoinType insertedCoinType, double weight, double diameter)
         {
-            //act
-            CoinType coinType = coinManager.Identify(5.00, 21.21);
+            CoinType coinType = coinManager.Identify(weight, diameter);
 
-            //assert
-            Assert.Equal(CoinType.Nickel,coinType);
-        }
-
-        [Fact]
-        public void WhenDimeIsInsertedTheCoinIsRecognized()
-        {
-            CoinType coinType = coinManager.Identify(2.268, 17.9);
-
-            Assert.Equal(CoinType.Dime, coinType);
-        }
-
-        [Fact]
-        public void WhenQuarterIsInsertedTheCoinIsRecognized()
-        {
-            CoinType coinType = coinManager.Identify(5.670, 24.26);
-
-            Assert.Equal(CoinType.Quarter, coinType);
-        }
-
-        [Fact]
-        public void WhenPennyIsInsertedTheCoinIsRecognized()
-        {
-            CoinType coinType = coinManager.Identify(3.11, 19.05);
-
-            Assert.Equal(CoinType.Unacceptable, coinType);
+            Assert.Equal(coinType, insertedCoinType);
         }
     }
 }
