@@ -122,6 +122,8 @@ namespace VendingMachine.Managers
 
                     if (chipsDispensed)
                     {
+                        productManager.chips.RemoveStock();
+
                         UpdateValuesWhenProductIsDispensed();
                     }
                 }
@@ -148,6 +150,8 @@ namespace VendingMachine.Managers
 
                     if (candyDispensed)
                     {
+                        productManager.candy.RemoveStock();
+
                         UpdateValuesWhenProductIsDispensed();
                     }
                 }
