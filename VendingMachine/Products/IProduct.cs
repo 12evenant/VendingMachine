@@ -8,6 +8,7 @@ namespace VendingMachine.Products
 {
     public interface IProduct
     {
+        int GetStock();
         bool Dispense();
     }
 }
