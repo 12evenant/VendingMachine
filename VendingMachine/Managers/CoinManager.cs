@@ -50,5 +50,12 @@ namespace VendingMachine.Managers
             return CoinType.Unacceptable;
         }
 
+        public bool ReturnCoins(decimal currentValue)
+        {
+            //logic to return coins here?
+
+            return true;
+        }
+
     }
 }
