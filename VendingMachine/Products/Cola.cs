@@ -8,12 +8,12 @@ namespace VendingMachine.Products
 {
     public class Cola : ProductBase
     {
-        private int Stock = 10;
+        private static int _stock = 2;
         public decimal Price => (decimal) 1.00;
 
-        public new int GetStock()
+        public Cola() : base(_stock)
         {
-            return Stock;
+            
         }
     }
 }
