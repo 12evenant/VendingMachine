@@ -19,7 +19,7 @@ namespace VendingMachineTests
 
         public const double dimeWeight = 2.268;
         public const double dimeDiameter = 17.9;
-
+        public const decimal dimeValue = (decimal) 0.05;
         #endregion
 
         #region Quarter Constants

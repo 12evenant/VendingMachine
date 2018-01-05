@@ -8,7 +8,7 @@ namespace VendingMachineTests
     public class CoinTests : TestBase
     {
         protected CoinManager coinManager;
-
+        protected Machine machine;
         public CoinTests()
         {
             coinManager = new CoinManager();
@@ -29,13 +29,9 @@ namespace VendingMachineTests
         [Fact]
         public void WhenDimeIsInsertedTotalAmountIsUpdated()
         {
-            //Given that a new machine will have 0 current coin to start with
-            Machine machine = new Machine();
-
             machine.InsertCoin(dimeWeight, dimeDiameter);
 
-            Assert.Equal((decimal) 0.10, machine.CurrentValue);
+            Assert.Equal(dimeValue, machine.CurrentValue);
         }
-
     }
 }
