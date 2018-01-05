@@ -12,6 +12,7 @@ namespace VendingMachine.Managers
         public decimal CurrentValue;
         public string CurrentDisplay;
         private bool _productRecentlyDispensed;
+        private bool _priceShown;
 
         public Machine()
         {
@@ -21,6 +22,7 @@ namespace VendingMachine.Managers
             CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
             CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
             _productRecentlyDispensed = false;
+            _priceShown = false;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -100,7 +102,9 @@ namespace VendingMachine.Managers
                 }
             }
             else
-                CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.chips.Price;
+            {
+                ManageSubSequentDisplays(productManager.chips.Price);
+            }
         }
 
         public void CandySelected()
@@ -115,14 +119,21 @@ namespace VendingMachine.Managers
                 }
             }
             else
-                CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.candy.Price;
+            {
+                UpdateDisplayToPrice(productManager.candy.Price);
+            }
         }
 
-        private void UpdateValuesWhenProductIsDispensed()
+        private void ManageSubSequentDisplays(decimal price)
         {
-            _productRecentlyDispensed = true;
-
-            CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+            if (!_priceShown)
+            {
+                UpdateDisplayToPrice(price);
+            }
+            else
+            {
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+            }
         }
 
         public void CheckDisplay()
@@ -135,6 +146,26 @@ namespace VendingMachine.Managers
 
                 _productRecentlyDispensed = false;
             }
+            else
+            {
+                ManageSubSequentDisplays(productManager.chips.Price);
+            }
+        }
+
+        private void UpdateDisplayToPrice(decimal price)
+        {
+            CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + price;
+
+            _priceShown = true;
+        }
+
+        private void UpdateValuesWhenProductIsDispensed()
+        {
+            _productRecentlyDispensed = true;
+
+            _priceShown = false;
+
+            CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
         }
     }
 }
