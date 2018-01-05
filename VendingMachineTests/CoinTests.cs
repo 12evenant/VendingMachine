@@ -37,16 +37,16 @@ namespace VendingMachineTests
         }
 
         [Theory]
-        [InlineData(0.10, dimeWeight, dimeDiameter)]
-        [InlineData(0.05, nickelWeight, nickelDiameter)]
-        [InlineData(0.25, quarterWeight, quarterDiameter)]
-        [InlineData(0.01, pennyWeight, pennyDiameter)]
+        [InlineData(0.10, dimeWeight, dimeDiameter,true)]
+        [InlineData(0.05, nickelWeight, nickelDiameter,true)]
+        [InlineData(0.25, quarterWeight, quarterDiameter,true)]
+        [InlineData(0.01, pennyWeight, pennyDiameter, false)]
         public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereAreNoCoinsInsertedBefore(decimal coinValue,
-            double weight, double diameter)
+            double weight, double diameter, bool isValid)
         {
             machine.InsertCoin(weight, diameter);
 
-            if(weight == pennyWeight && diameter == pennyDiameter)
+            if(!isValid)
                 Assert.NotEqual(coinValue,machine.CurrentValue);
             else
                 Assert.Equal(coinValue, machine.CurrentValue);
