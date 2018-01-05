@@ -34,6 +34,12 @@ namespace VendingMachine.Managers
                     case CoinType.Dime:
                         CurrentValue = CurrentValue + coinManager.DimeValue;
                         break;
+                    case CoinType.Nickel:
+                        CurrentValue = CurrentValue + coinManager.NickelValue;
+                        break;
+                    case CoinType.Quarter:
+                        CurrentValue = CurrentValue + coinManager.QuarterValue;
+                        break;
                 }
             }
         }
