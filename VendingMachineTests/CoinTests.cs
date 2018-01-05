@@ -25,5 +25,17 @@ namespace VendingMachineTests
 
             Assert.Equal(coinType, insertedCoinType);
         }
+
+        [Fact]
+        public void WhenDimeIsInsertedTotalAmountIsUpdated()
+        {
+            //Given that a new machine will have 0 current coin to start with
+            Machine machine = new Machine();
+
+            machine.InsertCoin(dimeWeight, dimeDiameter);
+
+            Assert.Equal(0.10,machine.CurrentValue);
+        }
+
     }
 }
