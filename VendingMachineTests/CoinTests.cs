@@ -9,9 +9,11 @@ namespace VendingMachineTests
     {
         protected CoinManager coinManager;
         protected Machine machine;
+
         public CoinTests()
         {
             coinManager = new CoinManager();
+            machine = new Machine();
         }
 
         [Theory]
@@ -35,16 +37,16 @@ namespace VendingMachineTests
         }
 
         [Theory]
-        [InlineData(dimeValue, dimeWeight, dimeDiameter)]
-        [InlineData(nickelValue, nickelWeight, nickelDiameter)]
-        [InlineData(quarterValue, quarterWeight, quarterDiameter)]
-        [InlineData(pennyValue, pennyWeight, pennyDiameter)]
+        [InlineData(0.10, dimeWeight, dimeDiameter)]
+        [InlineData(0.05, nickelWeight, nickelDiameter)]
+        [InlineData(0.25, quarterWeight, quarterDiameter)]
+        [InlineData(0.01, pennyWeight, pennyDiameter)]
         public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereAreNoCoinsInsertedBefore(decimal coinValue,
             double weight, double diameter)
         {
             machine.InsertCoin(weight, diameter);
 
-            Assert.Equal(dimeValue, machine.CurrentValue);
+            Assert.Equal(coinValue, machine.CurrentValue);
         }
     }
 }
