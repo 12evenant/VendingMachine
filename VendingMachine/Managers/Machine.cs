@@ -58,7 +58,10 @@ namespace VendingMachine.Managers
             bool coinReturned = coinManager.ReturnCoins(CurrentValue);
 
             if (coinReturned)
+            {
                 CurrentDisplay = DEFAULT_DISPLAY;
+                CurrentValue = (decimal) 0.0;
+            }
         }
     }
 }
