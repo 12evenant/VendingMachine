@@ -33,5 +33,18 @@ namespace VendingMachineTests
 
             Assert.Equal(dimeValue, machine.CurrentValue);
         }
+
+        [Theory]
+        [InlineData(dimeValue, dimeWeight, dimeDiameter)]
+        [InlineData(nickelValue, nickelWeight, nickelDiameter)]
+        [InlineData(quarterValue, quarterWeight, quarterDiameter)]
+        [InlineData(pennyValue, pennyWeight, pennyDiameter)]
+        public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereAreNoCoinsInsertedBefore(decimal coinValue,
+            double weight, double diameter)
+        {
+            machine.InsertCoin(weight, diameter);
+
+            Assert.Equal(dimeValue, machine.CurrentValue);
+        }
     }
 }
