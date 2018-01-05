@@ -125,6 +125,8 @@ namespace VendingMachine.Managers
             {
                 CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
 
+                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+
                 _productRecentlyDispensed = false;
             }
         }
