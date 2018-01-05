@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace VendingMachine.Products
 {
-    public class Cola
+    public class Cola : ProductBase
     {
-        public decimal Price = (decimal) 1.00;
-
-        public bool Dispense()
-        {
-            return true;
-        }
+        public decimal Price => (decimal) 1.00;
     }
 }
