@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,13 @@ namespace VendingMachine.Managers
         {
             CoinType coinType = coinManager.Identify(weight, diameter);
 
-            AddOrIgnoreCoinToValue(coinType);
+            bool coinAdded = AddOrIgnoreCoinToValue(coinType);
+
+            if (coinAdded)
+                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void AddOrIgnoreCoinToValue(CoinType coinType)
+        private bool AddOrIgnoreCoinToValue(CoinType coinType)
         {
             if (coinType != CoinType.Unacceptable)
             {
@@ -36,15 +40,16 @@ namespace VendingMachine.Managers
                 {
                     case CoinType.Dime:
                         CurrentValue = CurrentValue + coinManager.DimeValue;
-                        break;
+                        return true;
                     case CoinType.Nickel:
                         CurrentValue = CurrentValue + coinManager.NickelValue;
-                        break;
+                        return true;
                     case CoinType.Quarter:
                         CurrentValue = CurrentValue + coinManager.QuarterValue;
-                        break;
+                        return true;
                 }
             }
+            return false;
         }
     }
 }
