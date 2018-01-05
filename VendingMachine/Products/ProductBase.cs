@@ -8,9 +8,21 @@ namespace VendingMachine.Products
 {
     public class ProductBase : IProduct
     {
+        private int _stock;
+
+        public ProductBase(int stock)
+        {
+            _stock = stock;
+        }
+
+        public void RemoveStock()
+        {
+            _stock--;
+        }
+
         public int GetStock()
         {
-            throw new NotImplementedException();
+            return _stock;
         }
 
         public bool Dispense()
