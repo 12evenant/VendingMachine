@@ -154,5 +154,29 @@ namespace VendingMachineTests
 
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenColaIsSelected()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ColaSelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenCandyIsSelected()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.CandySelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
     }
 }
