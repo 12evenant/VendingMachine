@@ -185,5 +185,29 @@ namespace VendingMachineTests
 
             Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenChipsIsSelected()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ChipsSelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenCandyIsSelected()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.CandySelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
     }
 }
