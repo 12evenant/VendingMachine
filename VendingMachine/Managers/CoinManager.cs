@@ -13,6 +13,8 @@ namespace VendingMachine.Managers
         private const double _nickelWeight = 5.00;
         private const double _nickelDiameter = 21.21;
 
+        public decimal NickelValue => (decimal)0.05;
+
         #endregion
 
         #region Dime Constants
@@ -27,6 +29,7 @@ namespace VendingMachine.Managers
 
         private const double _quarterWeight = 5.670;
         private const double _quarterDiameter = 24.26;
+        public decimal QuarterValue => (decimal) 0.25;
 
         #endregion
 
@@ -46,5 +49,6 @@ namespace VendingMachine.Managers
             }
             return CoinType.Unacceptable;
         }
+
     }
 }
