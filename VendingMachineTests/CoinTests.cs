@@ -34,7 +34,7 @@ namespace VendingMachineTests
 
             machine.InsertCoin(dimeWeight, dimeDiameter);
 
-            Assert.Equal(0.10,machine.CurrentValue);
+            Assert.Equal((decimal) 0.10, machine.CurrentValue);
         }
 
     }
