@@ -114,7 +114,7 @@ namespace VendingMachineTests
         public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
         {
             machine.CurrentValue = dimeValue;
-            machine.CandySelected();
+            machine.ColaSelected();
 
             machine.CheckDisplay();
 
