@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using VendingMachine.Products;
 
 namespace VendingMachine.Managers
 {
@@ -11,18 +13,28 @@ namespace VendingMachine.Managers
     {
         private const string DEFAULT_DISPLAY = "INSERT COIN";
         private const decimal DEFAULT_VALUE = (decimal) 0.0;
-        public const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
+        private const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
+        private const string THANK_YOU_DISPLAY = "THANK YOU";
 
         protected CoinManager coinManager;
+        protected ProductManager productManager;
+
+        public Cola cola;
 
         public decimal CurrentValue;
         public string CurrentDisplay;
+        public bool ColaDispensing;
 
         public Machine()
         {
             coinManager = new CoinManager();
+            productManager = new ProductManager();
+
+            cola = new Cola();
+
             CurrentValue = DEFAULT_VALUE;
             CurrentDisplay = DEFAULT_DISPLAY;
+            ColaDispensing = false;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -77,7 +89,13 @@ namespace VendingMachine.Managers
 
         public void ColaSelected()
         {
-            throw new NotImplementedException();
+            if (cola.Price <= CurrentValue)
+            {
+                bool colaDispensed = cola.Dispense();
+
+                if (colaDispensed)
+                    CurrentDisplay = THANK_YOU_DISPLAY;
+            }
         }
     }
 }
