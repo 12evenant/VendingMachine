@@ -51,6 +51,7 @@ namespace VendingMachineTests
 
         public const decimal colaValue = (decimal) 1.00;
         public const decimal chipsValue = (decimal) 0.50;
+        public const decimal candyValue = (decimal) 0.65;
 
         #endregion
 
