@@ -121,6 +121,26 @@ namespace VendingMachineTests
             Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ChipsSelected();
 
+            machine.CheckDisplay();
+
+            Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ChipsSelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
+        }
     }
 }
