@@ -73,6 +73,15 @@ namespace VendingMachineTests
             CheckResultIsEqual(isValid, machine.CurrentValue.ToString(CultureInfo.InvariantCulture), DEFAULTDISPLAY,
                 machine.CurrentDisplay);
         }
+
+        [Fact]
+        public void WhenReturnCoinsIsPressedTheMoneyIsReturned()
+        {
+            bool coinReturned = coinManager.ReturnCoins(machine.CurrentValue);
+
+            Assert.True(coinReturned);
+        }
+
     }
 }
 
