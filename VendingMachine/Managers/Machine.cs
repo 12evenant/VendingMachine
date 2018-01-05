@@ -111,7 +111,11 @@ namespace VendingMachine.Managers
                 bool candyDispensed = productManager.candy.Dispense();
 
                 if (candyDispensed)
+                {
+                    _productRecentlyDispensed = true;
+
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                }
             }
         }
 
