@@ -92,6 +92,8 @@ namespace VendingMachine.Managers
 
                     if (colaDispensed)
                     {
+                        productManager.cola.RemoveStock();
+
                         UpdateValuesWhenProductIsDispensed();
                     }
                 }
