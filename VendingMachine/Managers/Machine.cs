@@ -10,6 +10,7 @@ namespace VendingMachine.Managers
     public class Machine
     {
         private const string DEFAULT_DISPLAY = "INSERT COIN";
+        private const decimal DEFAULT_VALUE = (decimal) 0.0;
 
         protected CoinManager coinManager;
 
@@ -19,7 +20,7 @@ namespace VendingMachine.Managers
         public Machine()
         {
             coinManager = new CoinManager();
-            CurrentValue = (decimal) 0.0;
+            CurrentValue = DEFAULT_VALUE;
             CurrentDisplay = DEFAULT_DISPLAY;
         }
 
@@ -60,7 +61,7 @@ namespace VendingMachine.Managers
             if (coinReturned)
             {
                 CurrentDisplay = DEFAULT_DISPLAY;
-                CurrentValue = (decimal) 0.0;
+                CurrentValue = DEFAULT_VALUE;
             }
         }
     }

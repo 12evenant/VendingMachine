@@ -9,9 +9,10 @@ namespace VendingMachineTests
 {
     public class TestBase
     {
-        #region String Constants
+        #region Machine Constants
 
-        public const string DEFAULTDISPLAY = "INSERT COIN";
+        public const string DEFAULT_DISPLAY = "INSERT COIN";
+        public const decimal DEFAULT_VALUE = (decimal) 0.0;
 
         #endregion
         #region Nickel Constants

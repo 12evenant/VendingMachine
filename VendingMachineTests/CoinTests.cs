@@ -60,7 +60,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenNoCoinIsInsertedTheMachineShouldDisplayInsertCoins()
         {
-            Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
         [Theory]
@@ -70,7 +70,7 @@ namespace VendingMachineTests
         {
             machine.InsertCoin(weight, diameter);
 
-            CheckResultIsEqual(isValid, machine.CurrentValue.ToString(CultureInfo.InvariantCulture), DEFAULTDISPLAY,
+            CheckResultIsEqual(isValid, machine.CurrentValue.ToString(CultureInfo.InvariantCulture), DEFAULT_DISPLAY,
                 machine.CurrentDisplay);
         }
 
@@ -87,7 +87,7 @@ namespace VendingMachineTests
         {
             machine.ReturnButtonPressed();
 
-            Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace VendingMachineTests
         {
             machine.ReturnButtonPressed();
 
-            Assert.Equal((decimal) 0.0, machine.CurrentValue);
+            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
         }
     }
 }
