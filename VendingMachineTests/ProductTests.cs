@@ -26,7 +26,7 @@ namespace VendingMachineTests
 
             machine.ColaSelected();
 
-            Assert.Equal("THANK YOU", machine.CurrentDisplay);
+            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         }
 
     }
