@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using VendingMachine.Enums;
+using VendingMachine.Products;
 
 
 namespace VendingMachine.Managers

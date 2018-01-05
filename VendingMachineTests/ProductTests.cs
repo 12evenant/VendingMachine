@@ -213,13 +213,14 @@ namespace VendingMachineTests
             Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
 
-        [Theory]
-        [ClassData(typeof(ProductSelector))]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
-        {
-            machine.SelectCandy(product);
+        //TODO: Extend This
+        //[Theory]
+        //[ClassData(typeof(ProductSelector))]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
+        //{
+        //    machine.SelectCandy(product);
 
-            Assert.Equal("SOLD OUT", machine.CurrentDisplay);
-        }
+        //    Assert.Equal("SOLD OUT", machine.CurrentDisplay);
+        //}
     }
 }
