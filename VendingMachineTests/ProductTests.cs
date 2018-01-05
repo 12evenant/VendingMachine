@@ -145,7 +145,6 @@ namespace VendingMachineTests
         {
             machine.CurrentValue = dimeValue;
             machine.ChipsSelected();
-            machine.CheckDisplay();
 
             machine.CheckDisplay();
 
@@ -157,7 +156,6 @@ namespace VendingMachineTests
         {
             machine.CurrentValue = dimeValue;
             machine.ColaSelected();
-            machine.CheckDisplay();
 
             machine.CheckDisplay();
 
@@ -169,7 +167,6 @@ namespace VendingMachineTests
         {
             machine.CurrentValue = dimeValue;
             machine.CandySelected();
-            machine.CheckDisplay();
 
             machine.CheckDisplay();
 
