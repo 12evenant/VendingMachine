@@ -19,10 +19,6 @@ namespace VendingMachine.Managers
         protected CoinManager coinManager;
         protected ProductManager productManager;
 
-        public Cola cola;
-        public Chips chips;
-        public Candy candy;
-
         public decimal CurrentValue;
         public string CurrentDisplay;
         public bool ColaDispensing;
@@ -31,10 +27,6 @@ namespace VendingMachine.Managers
         {
             coinManager = new CoinManager();
             productManager = new ProductManager();
-
-            cola = new Cola();
-            chips = new Chips();
-            candy = new Candy();
 
             CurrentValue = DEFAULT_VALUE;
             CurrentDisplay = DEFAULT_DISPLAY;
@@ -93,9 +85,9 @@ namespace VendingMachine.Managers
 
         public void ColaSelected()
         {
-            if (cola.Price <= CurrentValue)
+            if (productManager.cola.Price <= CurrentValue)
             {
-                bool colaDispensed = cola.Dispense();
+                bool colaDispensed = productManager.cola.Dispense();
 
                 if (colaDispensed)
                     CurrentDisplay = THANK_YOU_DISPLAY;
@@ -104,9 +96,9 @@ namespace VendingMachine.Managers
 
         public void ChipsSelected()
         {
-            if (chips.Price <= CurrentValue)
+            if (productManager.chips.Price <= CurrentValue)
             {
-                bool chipsDispensed = chips.Dispense();
+                bool chipsDispensed = productManager.chips.Dispense();
 
                 if (chipsDispensed)
                     CurrentDisplay = THANK_YOU_DISPLAY;
@@ -115,9 +107,9 @@ namespace VendingMachine.Managers
 
         public void CandySelected()
         {
-            if (candy.Price <= CurrentValue)
+            if (productManager.candy.Price <= CurrentValue)
             {
-                bool candyDispensed = candy.Dispense();
+                bool candyDispensed = productManager.candy.Dispense();
 
                 if (candyDispensed)
                     CurrentDisplay = THANK_YOU_DISPLAY;
