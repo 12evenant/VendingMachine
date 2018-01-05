@@ -46,7 +46,10 @@ namespace VendingMachineTests
         {
             machine.InsertCoin(weight, diameter);
 
-            Assert.Equal(coinValue, machine.CurrentValue);
+            if(weight == pennyWeight && diameter == pennyDiameter)
+                Assert.NotEqual(coinValue,machine.CurrentValue);
+            else
+                Assert.Equal(coinValue, machine.CurrentValue);
         }
     }
 }
