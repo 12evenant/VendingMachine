@@ -81,9 +81,7 @@ namespace VendingMachine.Managers
 
                 if (colaDispensed)
                 {
-                    _productRecentlyDispensed = true;
-
-                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                    UpdateValuesWhenProductIsDispensed();
                 }
             }
             CurrentDisplay = "PRICE : " + productManager.cola.Price;
@@ -97,9 +95,7 @@ namespace VendingMachine.Managers
 
                 if (chipsDispensed)
                 {
-                    _productRecentlyDispensed = true;
-
-                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                    UpdateValuesWhenProductIsDispensed();
                 }
             }
         }
@@ -112,11 +108,16 @@ namespace VendingMachine.Managers
 
                 if (candyDispensed)
                 {
-                    _productRecentlyDispensed = true;
-
-                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                    UpdateValuesWhenProductIsDispensed();
                 }
             }
+        }
+
+        private void UpdateValuesWhenProductIsDispensed()
+        {
+            _productRecentlyDispensed = true;
+
+            CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
         }
 
         public void CheckDisplay()
