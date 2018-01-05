@@ -11,6 +11,7 @@ namespace VendingMachineTests
     {
         #region Machine Constants
 
+        public const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
         public const string DEFAULT_DISPLAY = "INSERT COIN";
         public const decimal DEFAULT_VALUE = (decimal) 0.0;
 

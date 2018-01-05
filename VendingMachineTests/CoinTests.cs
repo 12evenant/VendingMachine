@@ -97,6 +97,14 @@ namespace VendingMachineTests
 
             Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
         }
+
+        [Fact]
+        public void WhenTheMachineIsNotAbleToMakeChangeItShouldUpdateTheDisplay()
+        {
+            machine.CheckIfChangeIsAvailable();
+
+            Assert.Equal(EXACT_CHANGE_ONLY_DISPLAY, machine.CurrentDisplay);
+        }
     }
 }
 

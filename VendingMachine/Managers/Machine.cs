@@ -64,5 +64,10 @@ namespace VendingMachine.Managers
                 CurrentValue = DEFAULT_VALUE;
             }
         }
+
+        public void CheckIfChangeIsAvailable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
