@@ -74,5 +74,10 @@ namespace VendingMachine.Managers
                 CurrentDisplay = EXACT_CHANGE_ONLY_DISPLAY;
 
         }
+
+        public void ColaSelected()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
