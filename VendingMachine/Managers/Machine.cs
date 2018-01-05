@@ -21,6 +21,7 @@ namespace VendingMachine.Managers
 
         public Cola cola;
         public Chips chips;
+        public Candy candy;
 
         public decimal CurrentValue;
         public string CurrentDisplay;
@@ -33,6 +34,7 @@ namespace VendingMachine.Managers
 
             cola = new Cola();
             chips = new Chips();
+            candy = new Candy();
 
             CurrentValue = DEFAULT_VALUE;
             CurrentDisplay = DEFAULT_DISPLAY;
@@ -113,7 +115,13 @@ namespace VendingMachine.Managers
 
         public void CandySelected()
         {
-            throw new NotImplementedException();
+            if (candy.Price <= CurrentValue)
+            {
+                bool candyDispensed = candy.Dispense();
+
+                if (candyDispensed)
+                    CurrentDisplay = THANK_YOU_DISPLAY;
+            }
         }
     }
 }
