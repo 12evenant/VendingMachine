@@ -11,8 +11,10 @@ namespace VendingMachine.Managers
 
         public decimal CurrentValue;
         public string CurrentDisplay;
+
         private bool _productRecentlyDispensed;
         private bool _priceShown;
+        private bool _showCurrentPriceNext;
 
         public Machine()
         {
@@ -21,8 +23,10 @@ namespace VendingMachine.Managers
 
             CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
             CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
             _productRecentlyDispensed = false;
             _priceShown = false;
+            _showCurrentPriceNext = false;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -133,9 +137,17 @@ namespace VendingMachine.Managers
             {
                 UpdateDisplayToPrice(price);
             }
-            else
+            else if (!_showCurrentPriceNext)
             {
                 CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+                _showCurrentPriceNext = true;
+            }
+            else
+            {
+                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+
+                _showCurrentPriceNext = false;
             }
         }
 
@@ -158,7 +170,6 @@ namespace VendingMachine.Managers
         private void UpdateDisplayToPrice(decimal price)
         {
             CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + price;
-
            
             _priceShown = true;
         }
