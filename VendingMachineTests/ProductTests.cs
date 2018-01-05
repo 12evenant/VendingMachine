@@ -142,5 +142,17 @@ namespace VendingMachineTests
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlready()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ChipsSelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
     }
 }
