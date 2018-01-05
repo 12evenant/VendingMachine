@@ -46,6 +46,8 @@
     <Compile Include="Enums\CoinType.cs" />
     <Compile Include="Managers\CoinManager.cs" />
     <Compile Include="Managers\Machine.cs" />
+    <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Products\Cola.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
