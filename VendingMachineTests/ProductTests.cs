@@ -76,5 +76,16 @@ namespace VendingMachineTests
 
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
+
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheCurrentValueIsReset()
+        {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        }
     }
 }
