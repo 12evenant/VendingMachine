@@ -84,6 +84,7 @@ namespace VendingMachine.Managers
         public void ColaSelected()
         {
             int currentStock = productManager.cola.GetStock();
+
             if (currentStock > 0)
             {
                 if (productManager.cola.Price <= CurrentValue)
@@ -111,35 +112,53 @@ namespace VendingMachine.Managers
 
         public void ChipsSelected()
         {
-            if (productManager.chips.Price <= CurrentValue)
-            {
-                bool chipsDispensed = productManager.chips.Dispense();
+            int currentStock = productManager.chips.GetStock();
 
-                if (chipsDispensed)
+            if (currentStock > 0)
+            {
+                if (productManager.chips.Price <= CurrentValue)
                 {
-                    UpdateValuesWhenProductIsDispensed();
+                    bool chipsDispensed = productManager.chips.Dispense();
+
+                    if (chipsDispensed)
+                    {
+                        UpdateValuesWhenProductIsDispensed();
+                    }
+                }
+                else
+                {
+                    ManageSubSequentDisplays(productManager.chips.Price);
                 }
             }
             else
             {
-                ManageSubSequentDisplays(productManager.chips.Price);
+                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
             }
         }
 
         public void CandySelected()
         {
-            if (productManager.candy.Price <= CurrentValue)
-            {
-                bool candyDispensed = productManager.candy.Dispense();
+            int currentStock = productManager.candy.GetStock();
 
-                if (candyDispensed)
+            if (currentStock > 0)
+            {
+                if (productManager.candy.Price <= CurrentValue)
                 {
-                    UpdateValuesWhenProductIsDispensed();
+                    bool candyDispensed = productManager.candy.Dispense();
+
+                    if (candyDispensed)
+                    {
+                        UpdateValuesWhenProductIsDispensed();
+                    }
+                }
+                else
+                {
+                    ManageSubSequentDisplays(productManager.candy.Price);
                 }
             }
             else
             {
-                ManageSubSequentDisplays(productManager.candy.Price);
+                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
             }
         }
 
