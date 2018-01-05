@@ -57,7 +57,7 @@ namespace VendingMachine.Managers
             return true;
         }
 
-        public bool CheckIfExactChangeIsAvailable(decimal currentValue)
+        public bool CheckIfChangeIsAvailable(decimal currentValue)
         {
             //logic to check goes here
 

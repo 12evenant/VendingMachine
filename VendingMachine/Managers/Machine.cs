@@ -68,9 +68,9 @@ namespace VendingMachine.Managers
 
         public void CheckIfChangeIsAvailable()
         {
-            bool exactChangeOnly = coinManager.CheckIfExactChangeIsAvailable(CurrentValue);
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(CurrentValue);
 
-            if (exactChangeOnly)
+            if (!changeAvailable)
                 CurrentDisplay = EXACT_CHANGE_ONLY_DISPLAY;
 
         }
