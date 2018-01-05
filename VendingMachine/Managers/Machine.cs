@@ -84,7 +84,8 @@ namespace VendingMachine.Managers
                     UpdateValuesWhenProductIsDispensed();
                 }
             }
-            CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.cola.Price;
+            else
+                CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.cola.Price;
         }
 
         public void ChipsSelected()
@@ -98,6 +99,8 @@ namespace VendingMachine.Managers
                     UpdateValuesWhenProductIsDispensed();
                 }
             }
+            else
+                CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.chips.Price;
         }
 
         public void CandySelected()
@@ -111,6 +114,8 @@ namespace VendingMachine.Managers
                     UpdateValuesWhenProductIsDispensed();
                 }
             }
+            else
+                CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + productManager.candy.Price;
         }
 
         private void UpdateValuesWhenProductIsDispensed()
