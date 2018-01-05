@@ -5,7 +5,7 @@ using VendingMachine.Managers;
 
 namespace VendingMachineTests
 {
-    public class CoinTests
+    public class CoinTests : TestBase
     {
         protected CoinManager coinManager;
 
@@ -15,10 +15,10 @@ namespace VendingMachineTests
         }
 
         [Theory]
-        [InlineData(CoinType.Nickel, 5.00, 21.21)]
-        [InlineData(CoinType.Dime, 2.268, 17.9)]
-        [InlineData(CoinType.Quarter, 5.670, 24.26)]
-        [InlineData(CoinType.Unacceptable, 3.11, 19.05)]
+        [InlineData(CoinType.Nickel, nickelWeight, nickelDiameter)]
+        [InlineData(CoinType.Dime, dimeWeight, dimeDiameter)]
+        [InlineData(CoinType.Quarter, quarterWeight, quarterDiameter)]
+        [InlineData(CoinType.Unacceptable, pennyWeight, pennyDiameter)]
         public void WhenValidCoinIsInsertedTheCoinIsRecognized(CoinType insertedCoinType, double weight, double diameter)
         {
             CoinType coinType = coinManager.Identify(weight, diameter);
