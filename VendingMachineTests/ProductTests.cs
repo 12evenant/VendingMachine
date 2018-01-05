@@ -20,13 +20,14 @@ namespace VendingMachineTests
         }
 
         [Fact]
-        public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheProductIsDispensed()
+        public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
             machine.CurrentValue = (decimal) 1.00;
 
             machine.ColaSelected();
 
-            Assert.True(machine.ColaDispensing);
+            Assert.Equal("THANK YOU", machine.CurrentDisplay);
         }
+
     }
 }
