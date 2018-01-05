@@ -8,14 +8,17 @@ namespace VendingMachine.Managers
 {
     public class Machine
     {
+        private const string DEFAULT_DISPLAY = "INSERT COIN";
+
         protected CoinManager coinManager;
 
         public decimal CurrentValue;
-
+        public string CurrentDisplay;
         public Machine()
         {
             coinManager = new CoinManager();
             CurrentValue = (decimal) 0.0;
+            CurrentDisplay = DEFAULT_DISPLAY;
         }
 
         public void InsertCoin(double weight, double diameter)

@@ -8,6 +8,11 @@ namespace VendingMachineTests
 {
     public class TestBase
     {
+        #region String Constants
+
+        public const string DEFAULTDISPLAY = "INSERT COIN";
+
+        #endregion
         #region Nickel Constants
 
         public const double nickelWeight = 5.00;
