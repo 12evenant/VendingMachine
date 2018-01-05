@@ -11,6 +11,7 @@ namespace VendingMachine.Managers
 
         public decimal CurrentValue;
         public string CurrentDisplay;
+        private bool _productRecentlyDispensed;
 
         public Machine()
         {
@@ -19,6 +20,7 @@ namespace VendingMachine.Managers
 
             CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
             CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+            _productRecentlyDispensed = false;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -79,6 +81,8 @@ namespace VendingMachine.Managers
 
                 if (colaDispensed)
                 {
+                    _productRecentlyDispensed = true;
+
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
                 }
 
@@ -109,7 +113,12 @@ namespace VendingMachine.Managers
 
         public void CheckDisplay()
         {
-            throw new NotImplementedException();
+            if (_productRecentlyDispensed)
+            {
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+                _productRecentlyDispensed = false;
+            }
         }
     }
 }
