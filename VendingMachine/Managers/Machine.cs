@@ -85,8 +85,8 @@ namespace VendingMachine.Managers
 
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
                 }
-
             }
+            CurrentDisplay = "PRICE : " + productManager.cola.Price;
         }
 
         public void ChipsSelected()
