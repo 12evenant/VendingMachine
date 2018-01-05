@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using VendingMachine;
 using Xunit;
 using Xunit.Extensions;
@@ -65,6 +66,18 @@ namespace VendingMachineTests
             Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
         }
 
+        [Theory]
+        [ClassData(typeof(CoinGenerator))]
+        public void WhenValidCoinIsInsertedTheMachineShouldUpdateTheDisplay(CoinType insertedCoinType,
+            double weight, double diameter, decimal coinValue, bool isValid)
+        {
+            machine.InsertCoin(weight, diameter);
+
+            if (!isValid)
+                Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
+            else
+                Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
     }
 }
 
