@@ -118,7 +118,7 @@ namespace VendingMachineTests
 
             machine.CheckDisplay();
 
-            Assert.Equal("PRICE : " + colaValue, machine.CurrentDisplay);
+            Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
         }
 
 
