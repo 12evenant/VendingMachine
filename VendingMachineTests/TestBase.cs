@@ -28,5 +28,12 @@ namespace VendingMachineTests
         public const double quarterDiameter = 24.26;
 
         #endregion
+
+        #region Penny Constants
+
+        public const double pennyWeight = 3.11;
+        public const double pennyDiameter = 19.05;
+
+        #endregion
     }
 }
