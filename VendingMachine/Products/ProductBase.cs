@@ -10,7 +10,7 @@ namespace VendingMachine.Products
     {
         public int GetStock()
         {
-            return 0;
+            throw new NotImplementedException();
         }
 
         public bool Dispense()
