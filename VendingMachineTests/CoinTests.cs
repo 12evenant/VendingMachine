@@ -57,6 +57,13 @@ namespace VendingMachineTests
             else
                 Assert.Equal(oldValue + coinValue, machine.CurrentValue);
         }
+
+        [Fact]
+        public void WhenNoCoinIsInsertedTheMachineShouldDisplayInsertCoins()
+        {
+            Assert.Equal("INSERT COIN", machine.CurrentDisplay);
+        }
+
     }
 }
 
