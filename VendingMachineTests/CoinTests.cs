@@ -1,7 +1,9 @@
 ﻿using System;
 using VendingMachine;
 using Xunit;
+using Xunit.Extensions;
 using VendingMachine.Managers;
+using VendingMachineTests.Helper;
 
 namespace VendingMachineTests
 {
@@ -17,39 +19,29 @@ namespace VendingMachineTests
         }
 
         [Theory]
-        [InlineData(CoinType.Nickel, nickelWeight, nickelDiameter)]
-        [InlineData(CoinType.Dime, dimeWeight, dimeDiameter)]
-        [InlineData(CoinType.Quarter, quarterWeight, quarterDiameter)]
-        [InlineData(CoinType.Unacceptable, pennyWeight, pennyDiameter)]
-        public void WhenValidCoinIsInsertedTheCoinIsRecognized(CoinType insertedCoinType, double weight, double diameter)
+        [ClassData(typeof(CoinGenerator))]
+        public void WhenValidCoinIsInsertedTheCoinIsRecognized(CoinType insertedCoinType,
+            double weight, double diameter, decimal coinValue, bool isValid)
         {
             CoinType coinType = coinManager.Identify(weight, diameter);
 
             Assert.Equal(coinType, insertedCoinType);
         }
 
-        [Fact]
-        public void WhenDimeIsInsertedTotalAmountIsUpdated()
-        {
-            machine.InsertCoin(dimeWeight, dimeDiameter);
-
-            Assert.Equal(dimeValue, machine.CurrentValue);
-        }
 
         [Theory]
-        [InlineData(0.10, dimeWeight, dimeDiameter,true)]
-        [InlineData(0.05, nickelWeight, nickelDiameter,true)]
-        [InlineData(0.25, quarterWeight, quarterDiameter,true)]
-        [InlineData(0.01, pennyWeight, pennyDiameter, false)]
-        public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereAreNoCoinsInsertedBefore(decimal coinValue,
-            double weight, double diameter, bool isValid)
+        [ClassData(typeof(CoinGenerator))]
+        public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereAreNoCoinsInsertedBefore(CoinType insertedCoinType,
+            double weight, double diameter, decimal coinValue, bool isValid)
         {
             machine.InsertCoin(weight, diameter);
 
-            if(!isValid)
-                Assert.NotEqual(coinValue,machine.CurrentValue);
+            if (!isValid)
+                Assert.NotEqual(coinValue, machine.CurrentValue);
             else
                 Assert.Equal(coinValue, machine.CurrentValue);
         }
     }
 }
+
+
