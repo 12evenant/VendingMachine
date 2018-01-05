@@ -110,5 +110,10 @@ namespace VendingMachine.Managers
                     CurrentDisplay = THANK_YOU_DISPLAY;
             }
         }
+
+        public void CandySelected()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
