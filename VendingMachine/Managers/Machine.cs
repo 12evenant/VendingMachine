@@ -1,36 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using VendingMachine.Products;
+﻿using System.Globalization;
+
 
 namespace VendingMachine.Managers
 {
     public class Machine
     {
-        private const string DEFAULT_DISPLAY = "INSERT COIN";
-        private const decimal DEFAULT_VALUE = (decimal) 0.0;
-        private const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
-        private const string THANK_YOU_DISPLAY = "THANK YOU";
-
         protected CoinManager coinManager;
         protected ProductManager productManager;
 
         public decimal CurrentValue;
         public string CurrentDisplay;
-        public bool ColaDispensing;
 
         public Machine()
         {
             coinManager = new CoinManager();
             productManager = new ProductManager();
 
-            CurrentValue = DEFAULT_VALUE;
-            CurrentDisplay = DEFAULT_DISPLAY;
-            ColaDispensing = false;
+            CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+            CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -69,8 +56,8 @@ namespace VendingMachine.Managers
 
             if (coinReturned)
             {
-                CurrentDisplay = DEFAULT_DISPLAY;
-                CurrentValue = DEFAULT_VALUE;
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
             }
         }
 
@@ -79,7 +66,7 @@ namespace VendingMachine.Managers
             bool changeAvailable = coinManager.CheckIfChangeIsAvailable(CurrentValue);
 
             if (!changeAvailable)
-                CurrentDisplay = EXACT_CHANGE_ONLY_DISPLAY;
+                CurrentDisplay = DisplayStringConstants.EXACT_CHANGE_ONLY_DISPLAY;
 
         }
 
@@ -90,7 +77,7 @@ namespace VendingMachine.Managers
                 bool colaDispensed = productManager.cola.Dispense();
 
                 if (colaDispensed)
-                    CurrentDisplay = THANK_YOU_DISPLAY;
+                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
             }
         }
 
@@ -101,7 +88,7 @@ namespace VendingMachine.Managers
                 bool chipsDispensed = productManager.chips.Dispense();
 
                 if (chipsDispensed)
-                    CurrentDisplay = THANK_YOU_DISPLAY;
+                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
             }
         }
 
@@ -112,7 +99,7 @@ namespace VendingMachine.Managers
                 bool candyDispensed = productManager.candy.Dispense();
 
                 if (candyDispensed)
-                    CurrentDisplay = THANK_YOU_DISPLAY;
+                    CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
             }
         }
     }
