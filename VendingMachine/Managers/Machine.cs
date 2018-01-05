@@ -11,6 +11,7 @@ namespace VendingMachine.Managers
     {
         private const string DEFAULT_DISPLAY = "INSERT COIN";
         private const decimal DEFAULT_VALUE = (decimal) 0.0;
+        public const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
 
         protected CoinManager coinManager;
 
@@ -67,7 +68,11 @@ namespace VendingMachine.Managers
 
         public void CheckIfChangeIsAvailable()
         {
-            throw new NotImplementedException();
+            bool exactChangeOnly = coinManager.CheckIfExactChangeIsAvailable(CurrentValue);
+
+            if (exactChangeOnly)
+                CurrentDisplay = EXACT_CHANGE_ONLY_DISPLAY;
+
         }
     }
 }

@@ -57,5 +57,12 @@ namespace VendingMachine.Managers
             return true;
         }
 
+        public bool CheckIfExactChangeIsAvailable(decimal currentValue)
+        {
+            //logic to check goes here
+
+            return true;
+        }
+
     }
 }
