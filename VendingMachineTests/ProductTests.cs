@@ -216,6 +216,12 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
         {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CurrentValue = colaValue;
             machine.ColaSelected();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
@@ -224,6 +230,12 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
         {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CurrentValue = colaValue;
             machine.ColaSelected();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
@@ -232,6 +244,12 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
         {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CurrentValue = colaValue;
             machine.ColaSelected();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
