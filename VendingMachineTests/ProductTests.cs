@@ -22,7 +22,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
-            machine.CurrentValue = (decimal) 1.00;
+            machine.CurrentValue = colaValue;
 
             machine.ColaSelected();
 
