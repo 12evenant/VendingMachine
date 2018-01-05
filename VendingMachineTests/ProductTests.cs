@@ -66,5 +66,15 @@ namespace VendingMachineTests
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndCandyWasRecentlyDispensedTheDisplaySaysInsertCoins()
+        {
+            machine.CurrentValue = candyValue;
+            machine.CandySelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
     }
 }
