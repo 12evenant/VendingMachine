@@ -48,16 +48,13 @@ namespace VendingMachineTests
         public void WhenValidCoinIsInsertedTheValueIsUpdatedWhenThereArePreviousCoinsInserted(CoinType insertedCoinType,
             double weight, double diameter, decimal coinValue, bool isValid)
         {        
-
             machine.CurrentValue = (decimal) 0.05;
+
             decimal oldValue = machine.CurrentValue;
 
             machine.InsertCoin(weight, diameter);
 
-            if (!isValid)
-                Assert.Equal(oldValue, machine.CurrentValue);
-            else
-                Assert.Equal(oldValue + coinValue, machine.CurrentValue);
+            CheckResultIsEqual(isValid, oldValue + coinValue, oldValue, machine.CurrentValue);
         }
 
         [Fact]
@@ -73,10 +70,8 @@ namespace VendingMachineTests
         {
             machine.InsertCoin(weight, diameter);
 
-            if (!isValid)
-                Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
-            else
-                Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+            CheckResultIsEqual(isValid, machine.CurrentValue.ToString(CultureInfo.InvariantCulture), DEFAULTDISPLAY,
+                machine.CurrentDisplay);
         }
     }
 }

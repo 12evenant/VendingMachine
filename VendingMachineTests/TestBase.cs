@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace VendingMachineTests
 {
@@ -42,5 +43,13 @@ namespace VendingMachineTests
         public const double pennyDiameter = 19.05;
         public const decimal pennyValue = (decimal) 0.01;
         #endregion
+
+        public void CheckResultIsEqual(bool isValid, object valueIfTrue, object valueIfFalse, object value)
+        {
+            if (!isValid)
+                Assert.Equal(valueIfFalse, value);
+            else
+                Assert.Equal(valueIfTrue, value);
+        }
     }
 }
