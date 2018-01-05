@@ -1,4 +1,5 @@
-﻿using VendingMachine.Managers;
+﻿using System.Globalization;
+using VendingMachine.Managers;
 using Xunit;
 
 namespace VendingMachineTests
@@ -171,6 +172,18 @@ namespace VendingMachineTests
             machine.CheckDisplay();
 
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenColaIsSelected()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ColaSelected();
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
     }
 }
