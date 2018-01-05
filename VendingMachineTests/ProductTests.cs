@@ -29,5 +29,15 @@ namespace VendingMachineTests
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void WhenChipsIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
+        {
+            machine.CurrentValue = chipsValue;
+
+            machine.ChipsSelected();
+
+            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        }
+
     }
 }

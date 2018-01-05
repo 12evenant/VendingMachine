@@ -97,5 +97,10 @@ namespace VendingMachine.Managers
                     CurrentDisplay = THANK_YOU_DISPLAY;
             }
         }
+
+        public void ChipsSelected()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -47,7 +47,12 @@ namespace VendingMachineTests
         public const decimal pennyValue = (decimal) 0.01;
         #endregion
 
+        #region Product Prices
+
         public const decimal colaValue = (decimal) 1.00;
+        public const decimal chipsValue = (decimal) 0.50;
+
+        #endregion
 
         public void CheckResultIsEqual(bool isValid, object valueIfTrue, object valueIfFalse, object value)
         {
