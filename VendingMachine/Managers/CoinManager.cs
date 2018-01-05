@@ -19,6 +19,7 @@ namespace VendingMachine.Managers
 
         private const double _dimeWeight = 2.268;
         private const double _dimeDiameter = 17.9;
+        public decimal DimeValue => (decimal) 0.10;
 
         #endregion
 

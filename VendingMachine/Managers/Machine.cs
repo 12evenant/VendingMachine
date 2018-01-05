@@ -32,7 +32,7 @@ namespace VendingMachine.Managers
                 switch (coinType)
                 {
                     case CoinType.Dime:
-                        CurrentValue = CurrentValue + (decimal)0.10;
+                        CurrentValue = CurrentValue + coinManager.DimeValue;
                         break;
                 }
             }
