@@ -47,7 +47,10 @@
     <Compile Include="Managers\CoinManager.cs" />
     <Compile Include="Managers\Machine.cs" />
     <Compile Include="Managers\ProductManager.cs" />
+    <Compile Include="Products\Chips.cs" />
     <Compile Include="Products\Cola.cs" />
+    <Compile Include="Products\IProduct.cs" />
+    <Compile Include="Products\ProductBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
