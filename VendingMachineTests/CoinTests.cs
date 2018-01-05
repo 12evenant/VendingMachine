@@ -82,6 +82,13 @@ namespace VendingMachineTests
             Assert.True(coinReturned);
         }
 
+        [Fact]
+        public void WhenReturnCoinsIsPressedTheDisplayIsUpdatedBackToDefault()
+        {
+            machine.ReturnButtonPressed();
+
+            Assert.Equal(DEFAULTDISPLAY, machine.CurrentDisplay);
+        }
     }
 }
 
