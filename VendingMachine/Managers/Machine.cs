@@ -83,20 +83,28 @@ namespace VendingMachine.Managers
 
         public void ColaSelected()
         {
-            if (productManager.cola.Price <= CurrentValue)
+            int currentStock = productManager.cola.GetStock();
+            if (currentStock > 0)
             {
-                bool colaDispensed = productManager.cola.Dispense();
-
-                if (colaDispensed)
+                if (productManager.cola.Price <= CurrentValue)
                 {
-                    UpdateValuesWhenProductIsDispensed();
+                    bool colaDispensed = productManager.cola.Dispense();
+
+                    if (colaDispensed)
+                    {
+                        UpdateValuesWhenProductIsDispensed();
+                    }
+                }
+                else
+                {
+                    ManageSubSequentDisplays(productManager.cola.Price);
                 }
             }
             else
             {
-                ManageSubSequentDisplays(productManager.cola.Price);
+                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
             }
-            
+
         }
 
         public void ChipsSelected()
