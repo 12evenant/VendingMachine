@@ -45,10 +45,21 @@ namespace VendingMachineTests
         }
 
         [Fact]
-        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysThankYou()
+        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysInsertCoins()
         {
             machine.CurrentValue = colaValue;
             machine.ColaSelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndChipsWasRecentlyDispensedTheDisplaySaysInsertCoins()
+        {
+            machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
 
             machine.CheckDisplay();
 
