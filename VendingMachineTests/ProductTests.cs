@@ -144,7 +144,7 @@ namespace VendingMachineTests
         }
 
         [Fact]
-        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlready()
+        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenChipsIsSelected()
         {
             machine.CurrentValue = dimeValue;
             machine.ChipsSelected();
