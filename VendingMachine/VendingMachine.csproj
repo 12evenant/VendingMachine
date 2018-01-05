@@ -52,6 +52,7 @@
     <Compile Include="Constants\Machine\DefaultValueConstants.cs" />
     <Compile Include="Constants\Machine\DisplayStringConstants.cs" />
     <Compile Include="Enums\CoinType.cs" />
+    <Compile Include="Enums\ProductType.cs" />
     <Compile Include="Managers\CoinManager.cs" />
     <Compile Include="Managers\Machine.cs" />
     <Compile Include="Managers\ProductManager.cs" />

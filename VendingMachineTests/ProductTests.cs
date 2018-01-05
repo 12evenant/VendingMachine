@@ -213,6 +213,30 @@ namespace VendingMachineTests
             Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
+        {
+            machine.ColaSelected();
+
+            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
+        {
+            machine.ColaSelected();
+
+            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
+        {
+            machine.ColaSelected();
+
+            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        }
+
         //TODO: Extend This
         //[Theory]
         //[ClassData(typeof(ProductSelector))]
