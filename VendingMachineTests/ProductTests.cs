@@ -114,9 +114,8 @@ namespace VendingMachineTests
         public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
         {
             machine.CurrentValue = dimeValue;
-            machine.ColaSelected();
 
-            machine.CheckDisplay();
+            machine.ColaSelected();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
         }
@@ -125,9 +124,8 @@ namespace VendingMachineTests
         public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
         {
             machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
 
-            machine.CheckDisplay();
+            machine.ChipsSelected();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         }
@@ -136,9 +134,8 @@ namespace VendingMachineTests
         public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
         {
             machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
 
-            machine.CheckDisplay();
+            machine.ChipsSelected();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         }
