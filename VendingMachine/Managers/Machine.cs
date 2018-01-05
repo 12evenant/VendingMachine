@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 
 namespace VendingMachine.Managers
@@ -77,7 +78,10 @@ namespace VendingMachine.Managers
                 bool colaDispensed = productManager.cola.Dispense();
 
                 if (colaDispensed)
+                {
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                }
+
             }
         }
 
@@ -101,6 +105,11 @@ namespace VendingMachine.Managers
                 if (candyDispensed)
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
             }
+        }
+
+        public void CheckDisplay()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VendingMachine.Managers;
+﻿using VendingMachine.Managers;
 using Xunit;
 
 namespace VendingMachineTests
@@ -47,6 +42,17 @@ namespace VendingMachineTests
             machine.CandySelected();
 
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysThankYou()
+        {
+            machine.CurrentValue = colaValue;
+            machine.CandySelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
     }
