@@ -9,6 +9,9 @@ namespace VendingMachine.Products
     public interface IProduct
     {
         int GetStock();
+
+        void RemoveStock();
+
         bool Dispense();
     }
 }
