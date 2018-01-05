@@ -48,7 +48,7 @@ namespace VendingMachineTests
         public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysThankYou()
         {
             machine.CurrentValue = colaValue;
-            machine.CandySelected();
+            machine.ColaSelected();
 
             machine.CheckDisplay();
 
