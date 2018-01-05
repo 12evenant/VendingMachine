@@ -109,5 +109,18 @@ namespace VendingMachineTests
 
             Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
         }
+
+        [Fact]
+        public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.CandySelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal("PRICE : " + colaValue, machine.CurrentDisplay);
+        }
+
+
     }
 }
