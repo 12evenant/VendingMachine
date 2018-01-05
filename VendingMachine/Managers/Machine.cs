@@ -96,7 +96,11 @@ namespace VendingMachine.Managers
                 bool chipsDispensed = productManager.chips.Dispense();
 
                 if (chipsDispensed)
+                {
+                    _productRecentlyDispensed = true;
+
                     CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
+                }
             }
         }
 
