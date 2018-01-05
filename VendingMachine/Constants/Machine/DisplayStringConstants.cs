@@ -11,5 +11,6 @@ namespace VendingMachine
         internal const string DEFAULT_DISPLAY = "INSERT COIN";
         internal const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
         internal const string THANK_YOU_DISPLAY = "THANK YOU";
+        internal const string PRICE_DISPLAY_PREFIX = "PRICE : ";
     }
 }
