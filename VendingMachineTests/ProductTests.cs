@@ -87,5 +87,27 @@ namespace VendingMachineTests
 
             Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
         }
+
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndAChipWasRecentlyDispensedTheCurrentValueIsReset()
+        {
+            machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        }
+
+        [Fact]
+        public void WhenTheDisplayIsCheckedAndACandyWasRecentlyDispensedTheCurrentValueIsReset()
+        {
+            machine.CurrentValue = candyValue;
+            machine.CandySelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        }
     }
 }
