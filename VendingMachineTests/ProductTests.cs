@@ -1,6 +1,9 @@
 ﻿using System.Globalization;
+using VendingMachine.Enums;
 using VendingMachine.Managers;
+using VendingMachineTests.Helper;
 using Xunit;
+using static VendingMachine.Enums.ProductType;
 
 namespace VendingMachineTests
 {
@@ -211,13 +214,11 @@ namespace VendingMachineTests
         }
 
         [Theory]
-        [InlineData(ProductType.Cola)]
-        [InlineData(ProductType.Chips)]
-        [InlineData(ProductType.Candy)]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut()
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
         {
-            machine.SelectCandy(ProductType product);
-            
+            machine.SelectCandy(product);
+
             Assert.Equal("SOLD OUT", machine.CurrentDisplay);
         }
     }
