@@ -15,6 +15,7 @@ namespace VendingMachine.Managers
 
         public decimal CurrentValue;
         public string CurrentDisplay;
+
         public Machine()
         {
             coinManager = new CoinManager();
@@ -50,6 +51,14 @@ namespace VendingMachine.Managers
                 }
             }
             return false;
+        }
+
+        public void ReturnButtonPressed()
+        {
+            bool coinReturned = coinManager.ReturnCoins(CurrentValue);
+
+            if (coinReturned)
+                CurrentDisplay = DEFAULT_DISPLAY;
         }
     }
 }
