@@ -18,31 +18,15 @@ namespace VendingMachineTests
             productManager = new ProductManager();
         }
 
-        //#region Tests
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenAProductIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou(ProductType product,
+            decimal value)
+        {
+            SimulateProductSold(product, value);
 
-        //[Fact]
-        //public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        //{
-        //    SimulateBuyingCola();
-
-        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenChipsIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        //{
-        //    SimulateBuyingChips();
-
-        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenCandyIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        //{
-        //    SimulateBuyingCandy();
-
-        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        //}
+            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
