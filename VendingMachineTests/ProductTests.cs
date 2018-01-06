@@ -44,35 +44,17 @@ namespace VendingMachineTests
         //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         //}
 
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        //{
-        //    SimulateBuyingCola();
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheDisplayIsCheckedAndAProductWasRecentlyDispensedTheDisplaySaysInsertCoins(ProductType product,
+            decimal value)
+        {
+            SimulateProductSold(product, value);
 
-        //    machine.CheckDisplay();
+            machine.CheckDisplay();
 
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndChipsWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        //{
-        //    SimulateBuyingChips();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndCandyWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        //{
-        //    SimulateBuyingCandy();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
