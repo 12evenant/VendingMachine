@@ -57,21 +57,21 @@ namespace VendingMachine.Managers
         private bool CheckIfChangeForProductIsAvailable(decimal value)
         {
             int numberOfQuarters = GetNumberOfQuarters();
-            while (value > QuarterConstants.QUARTER_VALUE && numberOfQuarters > 0)
+            while (value >= QuarterConstants.QUARTER_VALUE && numberOfQuarters > 0)
             {
                 numberOfQuarters--;
                 value -= QuarterConstants.QUARTER_VALUE;
             }
 
             int numberOfDimes = GetNumberOfDimes();
-            while (value > DimeConstants.DIME_VALUE && numberOfDimes > 0)
+            while (value >= DimeConstants.DIME_VALUE && numberOfDimes > 0)
             {
                 numberOfDimes--;
                 value -= DimeConstants.DIME_VALUE;
             }
 
             int numberOfNickels = GetNumberOfNickels();
-            while (value > NickelConstants.NICKEL_VALUE && numberOfNickels > 0)
+            while (value >= NickelConstants.NICKEL_VALUE && numberOfNickels > 0)
             {
                 numberOfNickels--;
                 value -= NickelConstants.NICKEL_VALUE;
