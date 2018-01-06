@@ -14,7 +14,7 @@ namespace VendingMachineTests
         public const string EXACT_CHANGE_ONLY_DISPLAY = "EXACT CHANGE ONLY";
         public const string DEFAULT_DISPLAY = "INSERT COIN";
         public const string THANK_YOU_DISPLAY = "THANK YOU";
-        public const string PRICE_DISPLAY_PREFIX = "PRICE : ";
+        public const string PRICE_DISPLAY_PREFIX = "PRICE : $";
         public const string SOLD_OUT_DISPLAY = "SOLD OUT";
         public const decimal DEFAULT_VALUE = (decimal) 0.0;
 
