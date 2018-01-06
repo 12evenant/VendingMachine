@@ -167,15 +167,20 @@ namespace VendingMachine.Managers
         {
             if (_soldOutShown)
             {
-                CurrentDisplay = CurrentValue > DefaultValueConstants.DEFAULT_VALUE
-                    ? CurrentValue.ToString(CultureInfo.InvariantCulture)
-                    : DisplayStringConstants.DEFAULT_DISPLAY;
+                SoldOutState();
             }
             else if (_productRecentlyDispensed)
             {
                 ResetDispenser();
             }
             
+        }
+
+        private void SoldOutState()
+        {
+            CurrentDisplay = CurrentValue > DefaultValueConstants.DEFAULT_VALUE
+                    ? CurrentValue.ToString(CultureInfo.InvariantCulture)
+                    : DisplayStringConstants.DEFAULT_DISPLAY;
         }
 
         private void ResetDispenser()
