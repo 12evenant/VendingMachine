@@ -9,9 +9,9 @@ namespace VendingMachine.Products
     public class Chips : ProductBase
     {
         private static int _stock = 2;
-        public decimal Price => (decimal) 0.50;
+        private static readonly decimal _price = (decimal) 0.50;
 
-        public Chips() : base(_stock)
+        public Chips() : base(_stock, _price)
         {
             
         }
