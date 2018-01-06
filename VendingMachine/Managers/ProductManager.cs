@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VendingMachine.Enums;
 using VendingMachine.Products;
 
 namespace VendingMachine.Managers
 {
     public class ProductManager
     {
-        public Cola cola;
-        public Chips chips;
-        public Candy candy;
-
+        protected Cola cola;
+        protected Chips chips;
+        protected Candy candy;
+        protected SelectedProduct SelectedProduct;
         public ProductManager()
         {
             cola = new Cola();
             chips = new Chips();
             candy = new Candy();
         }
+
+        public SelectedProduct GetSelectedProductDetails(ProductType productType)
+        {
+            SelectedProduct
+        }
+
+
     }
 }
