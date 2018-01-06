@@ -109,9 +109,17 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsNotAbleToGiveChangeItShouldReturnFalse()
         {
-            bool changeAvailable =  coinManager.CheckIfChangeIsAvailable(machine.CurrentValue);
+            bool changeAvailable =  machine.CheckIfChangeIsAvailable();
 
             Assert.False(changeAvailable);
+        }
+
+        [Fact]
+        public void WhenTheMachineIsAbleToGiveChangeItShouldReturnTrue()
+        {
+            bool changeAvailable = machine.CheckIfChangeIsAvailable();
+
+            Assert.True(changeAvailable);
         }
     }
 }
