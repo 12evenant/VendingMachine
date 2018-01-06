@@ -122,7 +122,40 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsAbleToGiveChangeItShouldReturnTrue()
         {
-            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(colaValue, chipsValue, candyValue));
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+            coinManager.AddCoinToBank(CoinType.Quarter);
+
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+            coinManager.AddCoinToBank(CoinType.Nickel);
+
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+            coinManager.AddCoinToBank(CoinType.Dime);
+
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(colaValue, chipsValue, candyValue);
 
             Assert.True(changeAvailable);
         }
