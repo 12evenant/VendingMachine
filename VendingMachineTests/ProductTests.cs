@@ -21,8 +21,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateBuyingCola();
 
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         }
@@ -30,9 +29,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenChipsIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
-            machine.CurrentValue = chipsValue;
-
-            machine.ChipsSelected();
+            SimulateBuyingChips();
 
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         }
@@ -40,9 +37,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenCandyIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
-            machine.CurrentValue = candyValue;
-
-            machine.CandySelected();
+            SimulateBuyingCandy();
 
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
         }
@@ -50,8 +45,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysInsertCoins()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateBuyingCola();
 
             machine.CheckDisplay();
 
@@ -61,8 +55,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndChipsWasRecentlyDispensedTheDisplaySaysInsertCoins()
         {
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
+            SimulateBuyingChips();
 
             machine.CheckDisplay();
 
@@ -72,8 +65,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndCandyWasRecentlyDispensedTheDisplaySaysInsertCoins()
         {
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
+            SimulateBuyingCandy();
 
             machine.CheckDisplay();
 
@@ -83,8 +75,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheCurrentValueIsReset()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateBuyingCola();
 
             machine.CheckDisplay();
 
@@ -94,8 +85,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndAChipWasRecentlyDispensedTheCurrentValueIsReset()
         {
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
+            SimulateBuyingChips();
 
             machine.CheckDisplay();
 
@@ -105,8 +95,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheDisplayIsCheckedAndACandyWasRecentlyDispensedTheCurrentValueIsReset()
         {
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
+            SimulateBuyingCandy();
 
             machine.CheckDisplay();
 
@@ -116,9 +105,7 @@ namespace VendingMachineTests
         [Fact]
         public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
         {
-            machine.CurrentValue = dimeValue;
-
-            machine.ColaSelected();
+            SimulateBuyingColaNotEnoughCredit();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
         }
@@ -126,9 +113,7 @@ namespace VendingMachineTests
         [Fact]
         public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
         {
-            machine.CurrentValue = dimeValue;
-
-            machine.ChipsSelected();
+            SimulateBuyingChipsNotEnoughCredit();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         }
@@ -136,9 +121,7 @@ namespace VendingMachineTests
         [Fact]
         public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
         {
-            machine.CurrentValue = dimeValue;
-
-            machine.ChipsSelected();
+            SimulateBuyingCandyNotEnoughCredit();
 
             Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         }
@@ -146,8 +129,7 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenChipsIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
+            SimulateBuyingChipsNotEnoughCredit();
 
             machine.CheckDisplay();
 
@@ -157,8 +139,7 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenColaIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.ColaSelected();
+            SimulateBuyingColaNotEnoughCredit();
 
             machine.CheckDisplay();
 
@@ -168,8 +149,7 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenCandyIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.CandySelected();
+            SimulateBuyingCandyNotEnoughCredit();
 
             machine.CheckDisplay();
 
@@ -179,8 +159,8 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenColaIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.ColaSelected();
+            SimulateBuyingColaNotEnoughCredit();
+
             machine.CheckDisplay();
 
             machine.CheckDisplay();
@@ -191,8 +171,8 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenChipsIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
+            SimulateBuyingChipsNotEnoughCredit();
+
             machine.CheckDisplay();
 
             machine.CheckDisplay();
@@ -203,8 +183,8 @@ namespace VendingMachineTests
         [Fact]
         public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenCandyIsSelected()
         {
-            machine.CurrentValue = dimeValue;
-            machine.CandySelected();
+            SimulateBuyingCandyNotEnoughCredit();
+
             machine.CheckDisplay();
 
             machine.CheckDisplay();
@@ -281,6 +261,12 @@ namespace VendingMachineTests
             machine.ColaSelected();
         }
 
+        private void SimulateBuyingColaNotEnoughCredit()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ColaSelected();
+        }
+
         private void SimulateChipsGoingOutOfStock()
         {
             SimulateBuyingChips();
@@ -291,6 +277,12 @@ namespace VendingMachineTests
         private void SimulateBuyingChips()
         {
             machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
+        }
+
+        private void SimulateBuyingChipsNotEnoughCredit()
+        {
+            machine.CurrentValue = dimeValue;
             machine.ChipsSelected();
         }
 
@@ -305,6 +297,12 @@ namespace VendingMachineTests
         {
             machine.CurrentValue = candyValue;
             machine.CandySelected();
+        }
+
+        private void SimulateBuyingCandyNotEnoughCredit()
+        {
+            machine.CurrentValue = dimeValue;
+            machine.ChipsSelected();
         }
         #endregion
 
