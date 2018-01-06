@@ -83,6 +83,19 @@ namespace VendingMachineTests
         }
 
         [Fact]
+        public void WhenReturnCoinsIsPressedTheMoneyIsDeductedFromTheBank()
+        {
+            decimal valueOfBankBefore = machine.GetValueOfBank();
+            machine.InsertCoin(quarterWeight, quarterDiameter);
+            machine.InsertCoin(dimeWeight, dimeDiameter);
+
+            machine.ReturnButtonPressed();
+
+            decimal valueOfBankAfter = machine.GetValueOfBank();
+            Assert.Equal(valueOfBankBefore - quarterValue - dimeValue, valueOfBankAfter);
+        }
+
+        [Fact]
         public void WhenReturnCoinsIsPressedTheDisplayIsUpdatedBackToDefault()
         {
             machine.ReturnButtonPressed();
@@ -91,7 +104,7 @@ namespace VendingMachineTests
         }
 
         [Fact]
-        public void WhenReturnCoinsIsPressedTheCurrentValueIsResetToZero()
+        public void WhenReturnCoinsIsPressedAndTheresChangeAvailableTheCurrentValueIsResetToZero()
         {
             machine.ReturnButtonPressed();
 
@@ -109,7 +122,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsNotAbleToGiveChangeItShouldReturnFalse()
         {
-            bool changeAvailable =  machine.CheckIfChangeIsAvailable();
+            bool changeAvailable =  coinManager.CheckIfChangeIsAvailable();
 
             Assert.False(changeAvailable);
         }
@@ -117,10 +130,11 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsAbleToGiveChangeItShouldReturnTrue()
         {
-            bool changeAvailable = machine.CheckIfChangeIsAvailable();
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable();
 
             Assert.True(changeAvailable);
         }
+
     }
 }
 
