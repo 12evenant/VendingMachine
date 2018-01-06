@@ -17,7 +17,7 @@ namespace VendingMachine.Managers
         private bool _productRecentlyDispensed;
         private bool _priceShown;
         private bool _soldOutShown;
-        private bool _showCurrentPriceNext;
+        private bool _showCurrentValueNext;
 
 
         public Machine()
@@ -30,7 +30,7 @@ namespace VendingMachine.Managers
 
             _productRecentlyDispensed = false;
             _priceShown = false;
-            _showCurrentPriceNext = false;
+            _showCurrentValueNext = false;
             _soldOutShown = false;
         }
 
@@ -110,7 +110,7 @@ namespace VendingMachine.Managers
                     }
                     else
                     {
-                        
+                        UpdateDisplayToPrice();
                     }
                 }
                 else
@@ -118,6 +118,12 @@ namespace VendingMachine.Managers
                     UpdateStateToSoldOut();
                 }
             }
+        }
+        private void UpdateDisplayToPrice()
+        {
+            CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + selectedProduct.Price;
+
+            _priceShown = true;
         }
 
         private void UpdateStateToSoldOut()
@@ -127,27 +133,26 @@ namespace VendingMachine.Managers
             _soldOutShown = true;
         }
 
-        //private void ManageSubSequentDisplays(decimal price)
-        //{
-        //     if (!_showCurrentPriceNext)
-        //    {
-        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-
-        //        _showCurrentPriceNext = true;
-        //    }
-        //    else
-        //    {
-        //        CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
-
-        //        _showCurrentPriceNext = false;
-        //    }
-        //}
-
         public void CheckDisplay()
         {
             if (_soldOutShown)
             {
                 SoldOutState();
+            }
+            else if (_priceShown)
+            {
+                if (_showCurrentValueNext)
+                {
+                    CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+
+                    _showCurrentValueNext = false;
+                }
+                else
+                {
+                    CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+                    _showCurrentValueNext = true;
+                }
             }
             else if (_productRecentlyDispensed)
             {
@@ -199,13 +204,6 @@ namespace VendingMachine.Managers
         //        ManageDisplay(selectedProduct.Price);
         //    }
         //}
-
-        private void UpdateDisplayToPrice(decimal price)
-        {
-            CurrentDisplay = DisplayStringConstants.PRICE_DISPLAY_PREFIX + price;
-           
-            _priceShown = true;
-        }
 
         private void UpdateValuesWhenProductIsDispensed()
         {
