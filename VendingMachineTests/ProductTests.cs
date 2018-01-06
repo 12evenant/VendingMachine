@@ -18,339 +18,339 @@ namespace VendingMachineTests
             productManager = new ProductManager();
         }
 
-        #region Tests
+        //#region Tests
 
-        [Fact]
-        public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        {
-            SimulateBuyingCola();
+        //[Fact]
+        //public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
+        //{
+        //    SimulateBuyingCola();
 
-            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenChipsIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        {
-            SimulateBuyingChips();
+        //[Fact]
+        //public void WhenChipsIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
+        //{
+        //    SimulateBuyingChips();
 
-            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenCandyIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
-        {
-            SimulateBuyingCandy();
+        //[Fact]
+        //public void WhenCandyIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
+        //{
+        //    SimulateBuyingCandy();
 
-            Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        {
-            SimulateBuyingCola();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheDisplaySaysInsertCoins()
+        //{
+        //    SimulateBuyingCola();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndChipsWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        {
-            SimulateBuyingChips();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndChipsWasRecentlyDispensedTheDisplaySaysInsertCoins()
+        //{
+        //    SimulateBuyingChips();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndCandyWasRecentlyDispensedTheDisplaySaysInsertCoins()
-        {
-            SimulateBuyingCandy();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndCandyWasRecentlyDispensedTheDisplaySaysInsertCoins()
+        //{
+        //    SimulateBuyingCandy();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheCurrentValueIsReset()
-        {
-            SimulateBuyingCola();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheCurrentValueIsReset()
+        //{
+        //    SimulateBuyingCola();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        }
+        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndAChipWasRecentlyDispensedTheCurrentValueIsReset()
-        {
-            SimulateBuyingChips();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndAChipWasRecentlyDispensedTheCurrentValueIsReset()
+        //{
+        //    SimulateBuyingChips();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        }
+        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        //}
 
-        [Fact]
-        public void WhenTheDisplayIsCheckedAndACandyWasRecentlyDispensedTheCurrentValueIsReset()
-        {
-            SimulateBuyingCandy();
+        //[Fact]
+        //public void WhenTheDisplayIsCheckedAndACandyWasRecentlyDispensedTheCurrentValueIsReset()
+        //{
+        //    SimulateBuyingCandy();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        }
+        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        //}
 
-        [Fact]
-        public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
-        {
-            SimulateBuyingColaNotEnoughCredit();
+        //[Fact]
+        //public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
+        //{
+        //    SimulateBuyingColaNotEnoughCredit();
 
-            Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
-        {
-            SimulateBuyingChipsNotEnoughCredit();
+        //[Fact]
+        //public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
+        //{
+        //    SimulateBuyingChipsNotEnoughCredit();
 
-            Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
-        {
-            SimulateBuyingCandyNotEnoughCredit();
+        //[Fact]
+        //public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
+        //{
+        //    SimulateBuyingCandyNotEnoughCredit();
 
-            Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenChipsIsSelected()
-        {
-            SimulateBuyingChipsNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenChipsIsSelected()
+        //{
+        //    SimulateBuyingChipsNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenColaIsSelected()
-        {
-            SimulateBuyingColaNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenColaIsSelected()
+        //{
+        //    SimulateBuyingColaNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenCandyIsSelected()
-        {
-            SimulateBuyingCandyNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenCandyIsSelected()
+        //{
+        //    SimulateBuyingCandyNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenColaIsSelected()
-        {
-            SimulateBuyingColaNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenColaIsSelected()
+        //{
+        //    SimulateBuyingColaNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenChipsIsSelected()
-        {
-            SimulateBuyingChipsNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenChipsIsSelected()
+        //{
+        //    SimulateBuyingChipsNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenCandyIsSelected()
-        {
-            SimulateBuyingCandyNotEnoughCredit();
+        //[Fact]
+        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenCandyIsSelected()
+        //{
+        //    SimulateBuyingCandyNotEnoughCredit();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
-        {
-            SimulateColaGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
+        //{
+        //    SimulateColaGoingOutOfStock();
 
-            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
-        {
-            SimulateChipsGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
+        //{
+        //    SimulateChipsGoingOutOfStock();
 
-            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
-        {
-            SimulateCandyGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
+        //{
+        //    SimulateCandyGoingOutOfStock();
 
-            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
-        {
-            SimulateColaGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
+        //{
+        //    SimulateColaGoingOutOfStock();
 
-            machine.ReturnButtonPressed();
+        //    machine.ReturnButtonPressed();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForChips()
-        {
-            SimulateChipsGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForChips()
+        //{
+        //    SimulateChipsGoingOutOfStock();
 
-            machine.ReturnButtonPressed();
+        //    machine.ReturnButtonPressed();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCandy()
-        {
-            SimulateCandyGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCandy()
+        //{
+        //    SimulateCandyGoingOutOfStock();
 
-            machine.ReturnButtonPressed();
+        //    machine.ReturnButtonPressed();
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        }
+        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCola()
-        {
-            SimulateCandyGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCola()
+        //{
+        //    SimulateCandyGoingOutOfStock();
 
-            machine.InsertCoin(dimeWeight, dimeDiameter);
+        //    machine.InsertCoin(dimeWeight, dimeDiameter);
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForChips()
-        {
-            SimulateCandyGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForChips()
+        //{
+        //    SimulateCandyGoingOutOfStock();
 
-            machine.InsertCoin(dimeWeight, dimeDiameter);
+        //    machine.InsertCoin(dimeWeight, dimeDiameter);
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        [Fact]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCandy()
-        {
-            SimulateCandyGoingOutOfStock();
+        //[Fact]
+        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCandy()
+        //{
+        //    SimulateCandyGoingOutOfStock();
 
-            machine.InsertCoin(dimeWeight, dimeDiameter);
+        //    machine.InsertCoin(dimeWeight, dimeDiameter);
 
-            machine.CheckDisplay();
+        //    machine.CheckDisplay();
 
-            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        }
+        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        //}
 
-        #endregion
+        //#endregion
 
-        #region Helper Methods
+        //#region Helper Methods
 
-        private void SimulateColaGoingOutOfStock()
-        {
-            SimulateBuyingCola();
-            SimulateBuyingCola();
-            SimulateBuyingCola();
-        }
+        //private void SimulateColaGoingOutOfStock()
+        //{
+        //    SimulateBuyingCola();
+        //    SimulateBuyingCola();
+        //    SimulateBuyingCola();
+        //}
 
-        private void SimulateBuyingCola()
-        {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
-        }
+        //private void SimulateBuyingCola()
+        //{
+        //    machine.CurrentValue = colaValue;
+        //    machine.ColaSelected();
+        //}
 
-        private void SimulateBuyingColaNotEnoughCredit()
-        {
-            machine.CurrentValue = dimeValue;
-            machine.ColaSelected();
-        }
+        //private void SimulateBuyingColaNotEnoughCredit()
+        //{
+        //    machine.CurrentValue = dimeValue;
+        //    machine.ColaSelected();
+        //}
 
-        private void SimulateChipsGoingOutOfStock()
-        {
-            SimulateBuyingChips();
-            SimulateBuyingChips();
-            SimulateBuyingChips();
-        }
+        //private void SimulateChipsGoingOutOfStock()
+        //{
+        //    SimulateBuyingChips();
+        //    SimulateBuyingChips();
+        //    SimulateBuyingChips();
+        //}
 
-        private void SimulateBuyingChips()
-        {
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
-        }
+        //private void SimulateBuyingChips()
+        //{
+        //    machine.CurrentValue = chipsValue;
+        //    machine.ChipsSelected();
+        //}
 
-        private void SimulateBuyingChipsNotEnoughCredit()
-        {
-            machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
-        }
+        //private void SimulateBuyingChipsNotEnoughCredit()
+        //{
+        //    machine.CurrentValue = dimeValue;
+        //    machine.ChipsSelected();
+        //}
 
-        private void SimulateCandyGoingOutOfStock()
-        {
-            SimulateBuyingCandy();
-            SimulateBuyingCandy();
-            SimulateBuyingCandy();
-        }
+        //private void SimulateCandyGoingOutOfStock()
+        //{
+        //    SimulateBuyingCandy();
+        //    SimulateBuyingCandy();
+        //    SimulateBuyingCandy();
+        //}
 
-        private void SimulateBuyingCandy()
-        {
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
-        }
+        //private void SimulateBuyingCandy()
+        //{
+        //    machine.CurrentValue = candyValue;
+        //    machine.CandySelected();
+        //}
 
-        private void SimulateBuyingCandyNotEnoughCredit()
-        {
-            machine.CurrentValue = dimeValue;
-            machine.ChipsSelected();
-        }
-        #endregion
+        //private void SimulateBuyingCandyNotEnoughCredit()
+        //{
+        //    machine.CurrentValue = dimeValue;
+        //    machine.ChipsSelected();
+        //}
+        //#endregion
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
