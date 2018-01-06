@@ -228,44 +228,19 @@ namespace VendingMachineTests
         //    machine.CheckDisplay();
 
         //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
+        //
 
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCola()
-        //{
-        //    SimulateCandyGoingOutOfStock();
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInserted(ProductType product, decimal value)
+        {
+            SimulateProductSoldOutState(product, value);
+            machine.InsertCoin(dimeWeight, dimeDiameter);
 
-        //    machine.InsertCoin(dimeWeight, dimeDiameter);
+            machine.CheckDisplay();
 
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForChips()
-        //{
-        //    SimulateCandyGoingOutOfStock();
-
-        //    machine.InsertCoin(dimeWeight, dimeDiameter);
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCandy()
-        //{
-        //    SimulateCandyGoingOutOfStock();
-
-        //    machine.InsertCoin(dimeWeight, dimeDiameter);
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
-
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
@@ -285,5 +260,7 @@ namespace VendingMachineTests
             machine.CurrentValue = value;
             machine.SelectProduct(product);
         }
+
+        
     }
 }
