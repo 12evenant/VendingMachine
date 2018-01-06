@@ -45,10 +45,11 @@ namespace VendingMachine.Managers
             return true;
         }
 
-        public bool CheckIfChangeIsAvailable()
+        public bool CheckIfChangeIsAvailable(decimal colaValue, decimal chipsValue, decimal candyDecimal)
         {
             throw new NotImplementedException();
         }
+
 
         public decimal GetValueOfBank()
         {
