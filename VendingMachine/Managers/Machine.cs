@@ -106,7 +106,6 @@ namespace VendingMachine.Managers
 
                             UpdateValuesWhenProductIsDispensed();
 
-                            ManageDisplay(selectedProduct.Price);
                         }
                     }
                     else
@@ -184,6 +183,8 @@ namespace VendingMachine.Managers
 
             _productRecentlyDispensed = false;
         }
+
+
         //public void CheckDisplay()
         //{
         //    if (_soldOutShown && CurrentValue == 0)
