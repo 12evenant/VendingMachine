@@ -8,6 +8,8 @@ namespace VendingMachine.Products
 {
     public interface IProduct
     {
+        decimal GetPrice();
+
         int GetStock();
 
         void RemoveStock();
