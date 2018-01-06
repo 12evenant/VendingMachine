@@ -90,27 +90,30 @@ namespace VendingMachine.Managers
         {
             selectedProduct = productManager.GetSelectedProductDetails(product);
 
-            if (selectedProduct.Stock > 0)
+            if (selectedProduct != null)
             {
-                _soldOutShown = false;
-
-                if (selectedProduct.Price <= CurrentValue)
+                if (selectedProduct.Stock > 0)
                 {
-                    bool productDispensed = productManager.Dispense(product);
+                    _soldOutShown = false;
 
-                    if (productDispensed)
+                    if (selectedProduct.Price <= CurrentValue)
                     {
-                        productManager.RemoveStock(product);
+                        bool productDispensed = productManager.Dispense(product);
 
-                        UpdateValuesWhenProductIsDispensed();
+                        if (productDispensed)
+                        {
+                            productManager.RemoveStock(product);
 
-                        ManageDisplay(selectedProduct.Price);
+                            UpdateValuesWhenProductIsDispensed();
+
+                            ManageDisplay(selectedProduct.Price);
+                        }
                     }
                 }
-            }
-            else
-            {
-                UpdateStateToSoldOut();
+                else
+                {
+                    UpdateStateToSoldOut();
+                }
             }
         }
 

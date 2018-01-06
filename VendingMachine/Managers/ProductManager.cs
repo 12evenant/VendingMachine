@@ -20,6 +20,7 @@ namespace VendingMachine.Managers
             cola = new Cola();
             chips = new Chips();
             candy = new Candy();
+            SelectedProduct = new SelectedProduct();
         }
 
         public SelectedProduct GetSelectedProductDetails(ProductType productType)
