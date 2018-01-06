@@ -87,14 +87,15 @@ namespace VendingMachineTests
         [Fact]
         public void WhenReturnCoinsIsPressedTheMoneyIsDeductedFromTheBank()
         {
-            decimal valueOfBankBefore = machine.GetValueOfBank();
-            machine.InsertCoin(quarterWeight, quarterDiameter);
-            machine.InsertCoin(dimeWeight, dimeDiameter);
+            decimal valueOfBankBefore = coinManager.GetValueOfBank();
+            AddCoinsToBank(CoinType.Quarter,2);
+            AddCoinsToBank(CoinType.Nickel, 2);
+            decimal totalCoinValue = (quarterValue*2) + (nickelValue*2);
 
-            machine.ReturnButtonPressed();
+            coinManager.ReturnCoins(totalCoinValue);
 
             decimal valueOfBankAfter = machine.GetValueOfBank();
-            Assert.Equal(valueOfBankBefore - quarterValue - dimeValue, valueOfBankAfter);
+            Assert.Equal(valueOfBankBefore , valueOfBankAfter);
         }
 
         [Fact]
