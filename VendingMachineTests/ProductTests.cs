@@ -195,30 +195,6 @@ namespace VendingMachineTests
         //}
 
         //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
-        //{
-        //    SimulateColaGoingOutOfStock();
-
-        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
-        //{
-        //    SimulateChipsGoingOutOfStock();
-
-        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
-        //{
-        //    SimulateCandyGoingOutOfStock();
-
-        //    Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
         //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
         //{
         //    SimulateColaGoingOutOfStock();
