@@ -74,59 +74,17 @@ namespace VendingMachineTests
         //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         //}
 
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndAColaWasRecentlyDispensedTheCurrentValueIsReset()
-        //{
-        //    SimulateBuyingCola();
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheDisplayIsCheckedAndAProductWasRecentlyDispensedTheCurrentValueIsReset(ProductType product,
+            decimal value)
+        {
+            SimulateProductSold(product, value);
 
-        //    machine.CheckDisplay();
+            machine.CheckDisplay();
 
-        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        //}
-
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndAChipWasRecentlyDispensedTheCurrentValueIsReset()
-        //{
-        //    SimulateBuyingChips();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        //}
-
-        //[Fact]
-        //public void WhenTheDisplayIsCheckedAndACandyWasRecentlyDispensedTheCurrentValueIsReset()
-        //{
-        //    SimulateBuyingCandy();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        //}
-
-        //[Fact]
-        //public void IfThereIsNotEnoughMoneyForColaInsertedThenTheDisplaySaysPriceAndValue()
-        //{
-        //    SimulateBuyingColaNotEnoughCredit();
-
-        //    Assert.Equal(PRICE_DISPLAY_PREFIX + colaValue, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void IfThereIsNotEnoughMoneyForChipsInsertedThenTheDisplaySaysPriceAndValue()
-        //{
-        //    SimulateBuyingChipsNotEnoughCredit();
-
-        //    Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void IfThereIsNotEnoughMoneyForCandyInsertedThenTheDisplaySaysPriceAndValue()
-        //{
-        //    SimulateBuyingCandyNotEnoughCredit();
-
-        //    Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
-        //}
+            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
