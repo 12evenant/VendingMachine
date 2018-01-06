@@ -215,6 +215,8 @@ namespace VendingMachine.Managers
 
             _priceShown = false;
 
+            CurrentValue = 0;
+
             CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
         }
     }
