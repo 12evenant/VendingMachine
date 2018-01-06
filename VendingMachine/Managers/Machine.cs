@@ -44,11 +44,6 @@ namespace VendingMachine.Managers
                 CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
         }
 
-        public decimal GetValueOfBank()
-        {
-            return coinManager.GetValueOfBank();
-        }
-
         private bool AddOrIgnoreCoinToValue(CoinType coinType)
         {
             if (coinType != CoinType.Unacceptable)
