@@ -45,11 +45,65 @@ namespace VendingMachine.Managers
             return true;
         }
 
-        public bool CheckIfChangeIsAvailable(decimal colaValue, decimal chipsValue, decimal candyDecimal)
+        public bool CheckIfChangeIsAvailable(decimal colaValue, decimal chipsValue, decimal candyValue)
         {
-            throw new NotImplementedException();
+            bool changeForColaAvailable = CheckIfChangeForProductIsAvailable(colaValue);
+            bool changeForChipsAvailable = CheckIfChangeForProductIsAvailable(chipsValue);
+            bool changeForCandyAvailable = CheckIfChangeForProductIsAvailable(candyValue);
+
+            return (changeForCandyAvailable && changeForChipsAvailable && changeForColaAvailable);
         }
 
+        private bool CheckIfChangeForProductIsAvailable(decimal value)
+        {
+            int numberOfQuarters = GetNumberOfQuarters();
+            while (value > QuarterConstants.QUARTER_VALUE && numberOfQuarters > 0)
+            {
+                numberOfQuarters--;
+                value -= QuarterConstants.QUARTER_VALUE;
+            }
+
+            int numberOfDimes = GetNumberOfDimes();
+            while (value > DimeConstants.DIME_VALUE && numberOfDimes > 0)
+            {
+                numberOfDimes--;
+                value -= DimeConstants.DIME_VALUE;
+            }
+
+            int numberOfNickels = GetNumberOfNickels();
+            while (value > NickelConstants.NICKEL_VALUE && numberOfNickels > 0)
+            {
+                numberOfNickels--;
+                value -= NickelConstants.NICKEL_VALUE;
+            }
+
+            if (value > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private int GetNumberOfQuarters()
+        {
+            List<CoinType> quarters = CoinBank.Where(c => c == CoinType.Quarter).ToList();
+
+            return quarters.Count;
+        }
+
+        private int GetNumberOfDimes()
+        {
+            List<CoinType> dimes = CoinBank.Where(c => c == CoinType.Dime).ToList();
+
+            return dimes.Count;
+        }
+
+        private int GetNumberOfNickels()
+        {
+            List<CoinType> nickels = CoinBank.Where(c => c == CoinType.Nickel).ToList();
+
+            return nickels.Count;
+        }
 
         public decimal GetValueOfBank()
         {
@@ -62,23 +116,23 @@ namespace VendingMachine.Managers
 
         private decimal GetValueOfQuartersInBank()
         {
-            List<CoinType> quarters = CoinBank.Where(c => c == CoinType.Quarter).ToList();
+            int quarterCount = GetNumberOfQuarters();
 
-            return quarters.Count*QuarterConstants.QUARTER_VALUE;
+            return quarterCount*QuarterConstants.QUARTER_VALUE;
         }
 
         private decimal GetValueOfDimesInBank()
         {
-            List<CoinType> dimes = CoinBank.Where(c => c == CoinType.Dime).ToList();
+            int dimeCount = GetNumberOfDimes();
 
-            return dimes.Count*DimeConstants.DIME_VALUE;
+            return dimeCount*DimeConstants.DIME_VALUE;
         }
 
         private decimal GetValueOfNickels()
         {
-            List<CoinType> nickels = CoinBank.Where(c => c == CoinType.Nickel).ToList();
+            int nickelCount = GetNumberOfNickels();
 
-            return nickels.Count*NickelConstants.NICKEL_VALUE;
+            return nickelCount*NickelConstants.NICKEL_VALUE;
         }
     }
 }
