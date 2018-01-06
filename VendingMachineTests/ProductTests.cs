@@ -352,14 +352,13 @@ namespace VendingMachineTests
         }
         #endregion
 
-        //TODO: Extend This
-        //[Theory]
-        //[ClassData(typeof(ProductSelector))]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
-        //{
-        //    machine.SelectCandy(product);
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
+        {
+            machine.SelectProduct(product);
 
-        //    Assert.Equal("SOLD OUT", machine.CurrentDisplay);
-        //}
+            Assert.Equal("SOLD OUT", machine.CurrentDisplay);
+        }
     }
 }
