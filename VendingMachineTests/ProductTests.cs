@@ -290,71 +290,17 @@ namespace VendingMachineTests
         //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         //}
 
-        //#endregion
-
-        //#region Helper Methods
-
-        //private void SimulateColaGoingOutOfStock()
-        //{
-        //    SimulateBuyingCola();
-        //    SimulateBuyingCola();
-        //    SimulateBuyingCola();
-        //}
-
-        //private void SimulateBuyingCola()
-        //{
-        //    machine.CurrentValue = colaValue;
-        //    machine.ColaSelected();
-        //}
-
-        //private void SimulateBuyingColaNotEnoughCredit()
-        //{
-        //    machine.CurrentValue = dimeValue;
-        //    machine.ColaSelected();
-        //}
-
-        //private void SimulateChipsGoingOutOfStock()
-        //{
-        //    SimulateBuyingChips();
-        //    SimulateBuyingChips();
-        //    SimulateBuyingChips();
-        //}
-
-        //private void SimulateBuyingChips()
-        //{
-        //    machine.CurrentValue = chipsValue;
-        //    machine.ChipsSelected();
-        //}
-
-        //private void SimulateBuyingChipsNotEnoughCredit()
-        //{
-        //    machine.CurrentValue = dimeValue;
-        //    machine.ChipsSelected();
-        //}
-
-        //private void SimulateCandyGoingOutOfStock()
-        //{
-        //    SimulateBuyingCandy();
-        //    SimulateBuyingCandy();
-        //    SimulateBuyingCandy();
-        //}
-
-        //private void SimulateBuyingCandy()
-        //{
-        //    machine.CurrentValue = candyValue;
-        //    machine.CandySelected();
-        //}
-
-        //private void SimulateBuyingCandyNotEnoughCredit()
-        //{
-        //    machine.CurrentValue = dimeValue;
-        //    machine.ChipsSelected();
-        //}
-        //#endregion
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product, decimal value)
+        {
+            SimulateProductSoldOutState(product, value);
+
+            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        private void SimulateProductSoldOutState(ProductType product, decimal value)
         {
             machine.CurrentValue = value;
             machine.SelectProduct(product);
@@ -362,9 +308,6 @@ namespace VendingMachineTests
             machine.SelectProduct(product);
             machine.CurrentValue = value;
             machine.SelectProduct(product);
-
-
-            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
     }
 }
