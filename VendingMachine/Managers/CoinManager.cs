@@ -49,5 +49,10 @@ namespace VendingMachine.Managers
             throw new NotImplementedException();
         }
 
+        public decimal GetValueOfBank()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }
