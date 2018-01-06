@@ -194,45 +194,24 @@ namespace VendingMachineTests
         //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         //}
 
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
-        //{
-        //    SimulateColaGoingOutOfStock();
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoin(
+            ProductType product, decimal value)
+        {
+            SimulateProductSoldOutState(product, value);
 
-        //    machine.ReturnButtonPressed();
+            machine.CurrentValue = 0;
 
-        //    machine.CheckDisplay();
+            machine.CheckDisplay();
 
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForChips()
-        //{
-        //    SimulateChipsGoingOutOfStock();
-
-        //    machine.ReturnButtonPressed();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCandy()
-        //{
-        //    SimulateCandyGoingOutOfStock();
-
-        //    machine.ReturnButtonPressed();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInserted(ProductType product, decimal value)
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInserted(
+            ProductType product, decimal value)
         {
             SimulateProductSoldOutState(product, value);
             machine.InsertCoin(dimeWeight, dimeDiameter);
@@ -260,7 +239,5 @@ namespace VendingMachineTests
             machine.CurrentValue = value;
             machine.SelectProduct(product);
         }
-
-        
     }
 }
