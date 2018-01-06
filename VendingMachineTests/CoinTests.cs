@@ -104,14 +104,6 @@ namespace VendingMachineTests
         }
 
         [Fact]
-        public void WhenReturnCoinsIsPressedAndTheresChangeAvailableTheCurrentValueIsResetToZero()
-        {
-            machine.ReturnButtonPressed();
-
-            Assert.Equal(DEFAULT_VALUE, machine.CurrentValue);
-        }
-
-        [Fact]
         public void WhenTheMachineIsNotAbleToGiveChangeItShouldUpdateTheDisplay()
         {
             machine.CheckIfChangeIsAvailable();
