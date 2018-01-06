@@ -10,7 +10,7 @@ namespace VendingMachine.Managers
     {
         protected CoinManager coinManager;
         protected ProductManager productManager;
-
+        protected SelectedProduct selectedProduct;
         public decimal CurrentValue;
         public string CurrentDisplay;
 
@@ -18,6 +18,7 @@ namespace VendingMachine.Managers
         private bool _priceShown;
         private bool _soldOutShown;
         private bool _showCurrentPriceNext;
+
 
         public Machine()
         {
@@ -74,6 +75,8 @@ namespace VendingMachine.Managers
             }
         }
 
+        
+
         public void CheckIfChangeIsAvailable()
         {
             bool changeAvailable = coinManager.CheckIfChangeIsAvailable(CurrentValue);
@@ -83,59 +86,26 @@ namespace VendingMachine.Managers
 
         }
 
-        public void ColaSelected()
+        public void SelectProduct(ProductType product)
         {
-            int currentStock = productManager.cola.GetStock();
+            selectedProduct = productManager.GetSelectedProductDetails(product);
 
-            if (currentStock > 0)
+            if (selectedProduct.Stock > 0)
             {
                 _soldOutShown = false;
 
-                if (productManager.cola.Price <= CurrentValue)
+                if (selectedProduct.Price <= CurrentValue)
                 {
-                    bool colaDispensed = productManager.cola.Dispense();
+                    bool productDispensed = productManager.Dispense(product);
 
-                    if (colaDispensed)
+                    if (productDispensed)
                     {
-                        productManager.cola.RemoveStock();
+                        productManager.RemoveStock(product);
 
                         UpdateValuesWhenProductIsDispensed();
+
+                        ManageDisplay(selectedProduct.Price);
                     }
-                }
-                else
-                {
-                    ManageSubSequentDisplays(productManager.cola.Price);
-                }
-            }
-            else
-            {
-                UpdateStateToSoldOut();
-            }
-
-        }
-
-        public void ChipsSelected()
-        {
-            int currentStock = productManager.chips.GetStock();
-
-            if (currentStock > 0)
-            {
-                _soldOutShown = false;
-
-                if (productManager.chips.Price <= CurrentValue)
-                {
-                    bool chipsDispensed = productManager.chips.Dispense();
-
-                    if (chipsDispensed)
-                    {
-                        productManager.chips.RemoveStock();
-
-                        UpdateValuesWhenProductIsDispensed();
-                    }
-                }
-                else
-                {
-                    ManageSubSequentDisplays(productManager.chips.Price);
                 }
             }
             else
@@ -144,35 +114,96 @@ namespace VendingMachine.Managers
             }
         }
 
-        public void CandySelected()
-        {
-            int currentStock = productManager.candy.GetStock();
+        //public void ColaSelected()
+        //{
+        //    int currentStock = productManager.cola.GetStock();
 
-            if (currentStock > 0)
-            {
-                _soldOutShown = false;
+        //    if (currentStock > 0)
+        //    {
+        //        _soldOutShown = false;
 
-                if (productManager.candy.Price <= CurrentValue)
-                {
-                    bool candyDispensed = productManager.candy.Dispense();
+        //        if (productManager.cola.Price <= CurrentValue)
+        //        {
+        //            bool colaDispensed = productManager.cola.Dispense();
 
-                    if (candyDispensed)
-                    {
-                        productManager.candy.RemoveStock();
+        //            if (colaDispensed)
+        //            {
+        //                productManager.cola.RemoveStock();
 
-                        UpdateValuesWhenProductIsDispensed();
-                    }
-                }
-                else
-                {
-                    ManageSubSequentDisplays(productManager.candy.Price);
-                }
-            }
-            else
-            {
-                UpdateStateToSoldOut();
-            }
-        }
+        //                UpdateValuesWhenProductIsDispensed();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ManageDisplay(productManager.cola.Price);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        UpdateStateToSoldOut();
+        //    }
+
+        //}
+
+        //public void ChipsSelected()
+        //{
+        //    int currentStock = productManager.chips.GetStock();
+
+        //    if (currentStock > 0)
+        //    {
+        //        _soldOutShown = false;
+
+        //        if (productManager.chips.Price <= CurrentValue)
+        //        {
+        //            bool chipsDispensed = productManager.chips.Dispense();
+
+        //            if (chipsDispensed)
+        //            {
+        //                productManager.chips.RemoveStock();
+
+        //                UpdateValuesWhenProductIsDispensed();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ManageDisplay(productManager.chips.Price);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        UpdateStateToSoldOut();
+        //    }
+        //}
+
+        //public void CandySelected()
+        //{
+        //    int currentStock = productManager.candy.GetStock();
+
+        //    if (currentStock > 0)
+        //    {
+        //        _soldOutShown = false;
+
+        //        if (productManager.candy.Price <= CurrentValue)
+        //        {
+        //            bool candyDispensed = productManager.candy.Dispense();
+
+        //            if (candyDispensed)
+        //            {
+        //                productManager.candy.RemoveStock();
+
+        //                UpdateValuesWhenProductIsDispensed();
+        //            }
+        //        }
+        //        else
+        //        {
+        //            ManageDisplay(productManager.candy.Price);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        UpdateStateToSoldOut();
+        //    }
+        //}
 
         private void UpdateStateToSoldOut()
         {
@@ -183,11 +214,23 @@ namespace VendingMachine.Managers
 
         private void ManageSubSequentDisplays(decimal price)
         {
-            if (CurrentValue > 0)
+             if (!_showCurrentPriceNext)
+            {
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+                _showCurrentPriceNext = true;
+            }
+            else
             {
                 CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+
+                _showCurrentPriceNext = false;
             }
-            else if (!_priceShown)
+        }
+
+        private void ManageDisplay(decimal price)
+        {
+            if (!_priceShown)
             {
                 UpdateDisplayToPrice(price);
             }
@@ -222,6 +265,10 @@ namespace VendingMachine.Managers
                 CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
 
                 _productRecentlyDispensed = false;
+            }
+            else
+            {
+                
             }
         }
 
