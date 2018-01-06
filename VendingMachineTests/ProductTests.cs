@@ -128,7 +128,15 @@ namespace VendingMachineTests
         //    Assert.Equal(PRICE_DISPLAY_PREFIX + chipsValue, machine.CurrentDisplay);
         //}
 
-        //[Fact]
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void IfThereIsNotEnoughMoneyForAProductThenTheDisplaySaysPriceAndValue(ProductType product,
+            decimal value)
+        {
+            SimulateSelectingProductNotEnoughCredit(product, value);
+
+            Assert.Equal(PRICE_DISPLAY_PREFIX + value, machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
