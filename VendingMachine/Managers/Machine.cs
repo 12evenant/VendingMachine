@@ -143,26 +143,6 @@ namespace VendingMachine.Managers
         //    }
         //}
 
-        private void ManageDisplay(decimal price)
-        {
-            if (!_priceShown)
-            {
-                UpdateDisplayToPrice(price);
-            }
-            else if (!_showCurrentPriceNext)
-            {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-
-                _showCurrentPriceNext = true;
-            }
-            else
-            {
-                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
-
-                _showCurrentPriceNext = false;
-            }
-        }
-
         public void CheckDisplay()
         {
             if (_soldOutShown)
