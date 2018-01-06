@@ -44,6 +44,11 @@ namespace VendingMachine.Managers
                 CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
         }
 
+        public decimal GetValueOfBank()
+        {
+            return coinManager.GetValueOfBank();
+        }
+
         private bool AddOrIgnoreCoinToValue(CoinType coinType)
         {
             if (coinType != CoinType.Unacceptable)
@@ -80,7 +85,10 @@ namespace VendingMachine.Managers
 
         public void CheckIfChangeIsAvailable()
         {
-            bool changeAvailable = coinManager.CheckIfChangeIsAvailable();
+            bool changeAvailable =
+                coinManager.CheckIfChangeIsAvailable(productManager.GetSelectedProductDetails(ProductType.Cola).Price,
+                    productManager.GetSelectedProductDetails(ProductType.Chips).Price,
+                    productManager.GetSelectedProductDetails(ProductType.Candy).Price);
 
             if (!changeAvailable)
                 CurrentDisplay = DisplayStringConstants.EXACT_CHANGE_ONLY_DISPLAY;
