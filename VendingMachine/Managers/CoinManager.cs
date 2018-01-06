@@ -79,9 +79,9 @@ namespace VendingMachine.Managers
 
             if (value > 0)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         private int GetNumberOfQuarters()
