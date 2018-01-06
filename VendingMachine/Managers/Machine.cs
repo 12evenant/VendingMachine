@@ -78,11 +78,9 @@ namespace VendingMachine.Managers
             }
         }
 
-        
-
         public void CheckIfChangeIsAvailable()
         {
-            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(CurrentValue);
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable();
 
             if (!changeAvailable)
                 CurrentDisplay = DisplayStringConstants.EXACT_CHANGE_ONLY_DISPLAY;
@@ -183,38 +181,13 @@ namespace VendingMachine.Managers
             _productRecentlyDispensed = false;
         }
 
-
-        //public void CheckDisplay()
-        //{
-        //    if (_soldOutShown && CurrentValue == 0)
-        //    {
-        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-        //    }
-        //    else if (_soldOutShown && CurrentValue > 0)
-        //    {
-        //        CurrentDisplay = CurrentValue.ToString();
-        //    }
-        //    else if (_productRecentlyDispensed)
-        //    {
-        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-
-        //        CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
-
-        //        _productRecentlyDispensed = false;
-        //    }
-        //    else
-        //    {
-        //        ManageDisplay(selectedProduct.Price);
-        //    }
-        //}
-
         private void UpdateValuesWhenProductIsDispensed()
         {
             _productRecentlyDispensed = true;
 
             _priceShown = false;
 
-            CurrentValue = 0;
+            CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
 
             CurrentDisplay = DisplayStringConstants.THANK_YOU_DISPLAY;
         }
