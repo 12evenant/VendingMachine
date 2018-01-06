@@ -16,6 +16,7 @@ namespace VendingMachine.Managers
 
         private bool _productRecentlyDispensed;
         private bool _priceShown;
+        private bool _soldOutShown;
         private bool _showCurrentPriceNext;
 
         public Machine()
@@ -29,6 +30,7 @@ namespace VendingMachine.Managers
             _productRecentlyDispensed = false;
             _priceShown = false;
             _showCurrentPriceNext = false;
+            _soldOutShown = false;
         }
 
         public void InsertCoin(double weight, double diameter)
@@ -87,6 +89,8 @@ namespace VendingMachine.Managers
 
             if (currentStock > 0)
             {
+                _soldOutShown = false;
+
                 if (productManager.cola.Price <= CurrentValue)
                 {
                     bool colaDispensed = productManager.cola.Dispense();
@@ -105,7 +109,7 @@ namespace VendingMachine.Managers
             }
             else
             {
-                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
+                UpdateStateToSoldOut();
             }
 
         }
@@ -116,6 +120,8 @@ namespace VendingMachine.Managers
 
             if (currentStock > 0)
             {
+                _soldOutShown = false;
+
                 if (productManager.chips.Price <= CurrentValue)
                 {
                     bool chipsDispensed = productManager.chips.Dispense();
@@ -134,7 +140,7 @@ namespace VendingMachine.Managers
             }
             else
             {
-                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
+                UpdateStateToSoldOut();
             }
         }
 
@@ -144,6 +150,8 @@ namespace VendingMachine.Managers
 
             if (currentStock > 0)
             {
+                _soldOutShown = false;
+
                 if (productManager.candy.Price <= CurrentValue)
                 {
                     bool candyDispensed = productManager.candy.Dispense();
@@ -162,13 +170,24 @@ namespace VendingMachine.Managers
             }
             else
             {
-                CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
+                UpdateStateToSoldOut();
             }
+        }
+
+        private void UpdateStateToSoldOut()
+        {
+            CurrentDisplay = DisplayStringConstants.SOLD_OUT_DISPLAY;
+
+            _soldOutShown = true;
         }
 
         private void ManageSubSequentDisplays(decimal price)
         {
-            if (!_priceShown)
+            if (CurrentValue > 0)
+            {
+                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+            }
+            else if (!_priceShown)
             {
                 UpdateDisplayToPrice(price);
             }
@@ -188,17 +207,21 @@ namespace VendingMachine.Managers
 
         public void CheckDisplay()
         {
-            if (_productRecentlyDispensed)
+            if (_soldOutShown && CurrentValue == 0)
+            {
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+            }
+            else if (_soldOutShown && CurrentValue > 0)
+            {
+                CurrentDisplay = CurrentValue.ToString();
+            }
+            else if (_productRecentlyDispensed)
             {
                 CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
 
                 CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
 
                 _productRecentlyDispensed = false;
-            }
-            else
-            {
-                ManageSubSequentDisplays(productManager.chips.Price);
             }
         }
 
