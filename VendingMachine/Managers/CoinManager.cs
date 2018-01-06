@@ -40,8 +40,34 @@ namespace VendingMachine.Managers
 
         public bool ReturnCoins(decimal currentValue)
         {
-            //logic to return coins here?
+            int numberOfQuarters = GetNumberOfQuarters();
+            while (currentValue >= QuarterConstants.QUARTER_VALUE && numberOfQuarters > 0)
+            {
+                numberOfQuarters--;
+                CoinBank.Remove(CoinType.Quarter);
+                currentValue -= QuarterConstants.QUARTER_VALUE;
+            }
 
+            int numberOfDimes = GetNumberOfDimes();
+            while (currentValue >= DimeConstants.DIME_VALUE && numberOfDimes > 0)
+            {
+                numberOfDimes--;
+                CoinBank.Remove(CoinType.Dime);
+                currentValue -= DimeConstants.DIME_VALUE;
+            }
+
+            int numberOfNickels = GetNumberOfNickels();
+            while (currentValue >= NickelConstants.NICKEL_VALUE && numberOfNickels > 0)
+            {
+                numberOfNickels--;
+                CoinBank.Remove(CoinType.Nickel);
+                currentValue -= NickelConstants.NICKEL_VALUE;
+            }
+
+            if (currentValue > 0)
+            {
+                return false;
+            }
             return true;
         }
 
