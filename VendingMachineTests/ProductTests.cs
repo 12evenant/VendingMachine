@@ -358,6 +358,11 @@ namespace VendingMachineTests
         {
             machine.CurrentValue = value;
             machine.SelectProduct(product);
+            machine.CurrentValue = value;
+            machine.SelectProduct(product);
+            machine.CurrentValue = value;
+            machine.SelectProduct(product);
+
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
