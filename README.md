@@ -10,6 +10,8 @@ To run the tests follow these steps:
 - Open a command prompt in Administrator Mode.
 
 - Navigate to the root folder of the solution.
+  
+  E.g. cd <path>
 
 - Run the following command:
 
