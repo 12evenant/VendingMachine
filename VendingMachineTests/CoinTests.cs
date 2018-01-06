@@ -77,7 +77,9 @@ namespace VendingMachineTests
         [Fact]
         public void WhenReturnCoinsIsPressedTheMoneyIsReturned()
         {
-            bool coinReturned = coinManager.ReturnCoins(machine.CurrentValue);
+            coinManager.AddCoinToBank(CoinType.Dime);
+
+            bool coinReturned = coinManager.ReturnCoins(dimeValue);
 
             Assert.True(coinReturned);
         }
