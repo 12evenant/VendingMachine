@@ -22,7 +22,6 @@ namespace VendingMachineTests
         public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
             machine.CurrentValue = colaValue;
-
             machine.ColaSelected();
 
             Assert.Equal(THANK_YOU_DISPLAY, machine.CurrentDisplay);
@@ -271,33 +270,39 @@ namespace VendingMachineTests
 
         private void SimulateColaGoingOutOfStock()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateBuyingCola();
+            SimulateBuyingCola();
+            SimulateBuyingCola();
+        }
 
+        private void SimulateBuyingCola()
+        {
             machine.CurrentValue = colaValue;
             machine.ColaSelected();
         }
 
         private void SimulateChipsGoingOutOfStock()
         {
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
+            SimulateBuyingChips();
+            SimulateBuyingChips();
+            SimulateBuyingChips();
+        }
 
+        private void SimulateBuyingChips()
+        {
             machine.CurrentValue = chipsValue;
             machine.ChipsSelected();
         }
 
         private void SimulateCandyGoingOutOfStock()
         {
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
+            SimulateBuyingCandy();
+            SimulateBuyingCandy();
+            SimulateBuyingCandy();
+        }
 
+        private void SimulateBuyingCandy()
+        {
             machine.CurrentValue = candyValue;
             machine.CandySelected();
         }
