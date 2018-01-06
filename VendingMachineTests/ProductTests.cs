@@ -248,6 +248,42 @@ namespace VendingMachineTests
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCola()
+        {
+            SimulateCandyGoingOutOfStock();
+
+            machine.InsertCoin(dimeWeight, dimeDiameter);
+
+            machine.CheckDisplay();
+
+            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForChips()
+        {
+            SimulateCandyGoingOutOfStock();
+
+            machine.InsertCoin(dimeWeight, dimeDiameter);
+
+            machine.CheckDisplay();
+
+            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayValueInsertedForCandy()
+        {
+            SimulateCandyGoingOutOfStock();
+
+            machine.InsertCoin(dimeWeight, dimeDiameter);
+
+            machine.CheckDisplay();
+
+            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
+
         #endregion
 
         #region Helper Methods
