@@ -51,12 +51,15 @@ namespace VendingMachine.Managers
                 switch (coinType)
                 {
                     case CoinType.Dime:
+                        coinManager.AddCoinToBank(coinType);
                         CurrentValue = CurrentValue + DimeConstants.DIME_VALUE;
                         return true;
                     case CoinType.Nickel:
+                        coinManager.AddCoinToBank(coinType);
                         CurrentValue = CurrentValue + NickelConstants.NICKEL_VALUE;
                         return true;
                     case CoinType.Quarter:
+                        coinManager.AddCoinToBank(coinType);
                         CurrentValue = CurrentValue + QuarterConstants.QUARTER_VALUE;
                         return true;
                 }

@@ -8,6 +8,18 @@ namespace VendingMachine.Managers
 {
     public class CoinManager
     {
+        private List<CoinType> CoinBank;
+
+        public CoinManager()
+        {
+            CoinBank = new List<CoinType>();
+        }
+
+        public void AddCoinToBank(CoinType coin)
+        {
+            CoinBank.Add(coin);
+        }
+
         public CoinType Identify(double weight, double diameter)
         {
             if (weight == NickelConstants.NICKEL_WEIGHT && diameter == NickelConstants.NICKEL_DIAMETER)
