@@ -122,42 +122,23 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsAbleToGiveChangeItShouldReturnTrue()
         {
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
-            coinManager.AddCoinToBank(CoinType.Quarter);
+            AddCoinsToBank(CoinType.Quarter, 10);
 
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
-            coinManager.AddCoinToBank(CoinType.Nickel);
+            AddCoinsToBank(CoinType.Dime, 10);
 
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
-            coinManager.AddCoinToBank(CoinType.Dime);
+            AddCoinsToBank(CoinType.Nickel, 10);
 
             bool changeAvailable = coinManager.CheckIfChangeIsAvailable(colaValue, chipsValue, candyValue);
 
             Assert.True(changeAvailable);
+        }
+
+        private void AddCoinsToBank(CoinType coin, int numberToAdd)
+        {
+            for (int i = 0; i < numberToAdd; i++)
+            {
+                coinManager.AddCoinToBank(coin);
+            }
         }
 
     }
