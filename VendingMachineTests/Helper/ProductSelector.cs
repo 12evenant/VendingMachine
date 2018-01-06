@@ -8,13 +8,13 @@ using VendingMachine.Enums;
 
 namespace VendingMachineTests.Helper
 {
-    internal class ProductSelector : IEnumerable<object[]>
+    internal class ProductSelector : TestBase, IEnumerable<object[]>
     {
         private readonly List<object[]> _productTypes = new List<object[]>
         {
-            new object[] { ProductType.Cola },
-            new object[] { ProductType.Candy},
-            new object[] { ProductType.Chips}
+            new object[] { ProductType.Cola , colaValue},
+            new object[] { ProductType.Candy, candyValue},
+            new object[] { ProductType.Chips, chipsValue}
         };
 
         public IEnumerator<object[]> GetEnumerator()

@@ -354,11 +354,12 @@ namespace VendingMachineTests
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
-        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product)
+        public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOut(ProductType product, decimal value)
         {
+            machine.CurrentValue = value;
             machine.SelectProduct(product);
 
-            Assert.Equal("SOLD OUT", machine.CurrentDisplay);
+            Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
     }
 }
