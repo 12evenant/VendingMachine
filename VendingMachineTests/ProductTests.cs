@@ -232,10 +232,13 @@ namespace VendingMachineTests
 
         private void SimulateProductSoldOutState(ProductType product, decimal value)
         {
-            machine.CurrentValue = value;
-            machine.SelectProduct(product);
-            machine.CurrentValue = value;
-            machine.SelectProduct(product);
+            SimulateProductSold(product, value);
+            SimulateProductSold(product, value);
+            SimulateProductSold(product, value);
+        }
+
+        private void SimulateProductSold(ProductType product, decimal value)
+        {
             machine.CurrentValue = value;
             machine.SelectProduct(product);
         }
