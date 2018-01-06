@@ -18,6 +18,8 @@ namespace VendingMachineTests
             productManager = new ProductManager();
         }
 
+        #region Tests
+
         [Fact]
         public void WhenColaIsSelectedAndEnoughMoneyHasBeenInsertedTheDisplaySaysThankYou()
         {
@@ -246,6 +248,8 @@ namespace VendingMachineTests
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
         }
 
+        #endregion
+
         #region Helper Methods
 
         private void SimulateColaGoingOutOfStock()
@@ -305,7 +309,6 @@ namespace VendingMachineTests
             machine.ChipsSelected();
         }
         #endregion
-
 
         //TODO: Extend This
         //[Theory]
