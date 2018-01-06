@@ -168,12 +168,21 @@ namespace VendingMachine.Managers
         {
             if (_productRecentlyDispensed)
             {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-
-                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
-
-                _productRecentlyDispensed = false;
+                ResetDispenser();
             }
+            else
+            {
+                
+            }
+        }
+
+        private void ResetDispenser()
+        {
+            CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+            CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+
+            _productRecentlyDispensed = false;
         }
         //public void CheckDisplay()
         //{
