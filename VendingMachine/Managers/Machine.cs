@@ -109,6 +109,10 @@ namespace VendingMachine.Managers
                             ManageDisplay(selectedProduct.Price);
                         }
                     }
+                    else
+                    {
+                        
+                    }
                 }
                 else
                 {
@@ -124,21 +128,21 @@ namespace VendingMachine.Managers
             _soldOutShown = true;
         }
 
-        private void ManageSubSequentDisplays(decimal price)
-        {
-             if (!_showCurrentPriceNext)
-            {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+        //private void ManageSubSequentDisplays(decimal price)
+        //{
+        //     if (!_showCurrentPriceNext)
+        //    {
+        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
 
-                _showCurrentPriceNext = true;
-            }
-            else
-            {
-                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+        //        _showCurrentPriceNext = true;
+        //    }
+        //    else
+        //    {
+        //        CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
 
-                _showCurrentPriceNext = false;
-            }
-        }
+        //        _showCurrentPriceNext = false;
+        //    }
+        //}
 
         private void ManageDisplay(decimal price)
         {
@@ -162,7 +166,14 @@ namespace VendingMachine.Managers
 
         public void CheckDisplay()
         {
-            
+            if (_productRecentlyDispensed)
+            {
+                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+
+                _productRecentlyDispensed = false;
+            }
         }
         //public void CheckDisplay()
         //{
@@ -184,7 +195,7 @@ namespace VendingMachine.Managers
         //    }
         //    else
         //    {
-                
+        //        ManageDisplay(selectedProduct.Price);
         //    }
         //}
 
