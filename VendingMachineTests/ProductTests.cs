@@ -255,6 +255,27 @@ namespace VendingMachineTests
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
 
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
+        {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        #region Helper Methods
+
+        #endregion
+
+
         //TODO: Extend This
         //[Theory]
         //[ClassData(typeof(ProductSelector))]
