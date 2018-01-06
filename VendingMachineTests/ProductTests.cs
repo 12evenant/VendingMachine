@@ -129,70 +129,18 @@ namespace VendingMachineTests
         //}
 
         //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenChipsIsSelected()
-        //{
-        //    SimulateBuyingChipsNotEnoughCredit();
 
-        //    machine.CheckDisplay();
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
+        public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlready(ProductType product,
+            decimal value)
+        {
+            SimulateSelectingProductNotEnoughCredit(product, value);
 
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
+            machine.CheckDisplay();
 
-        //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenColaIsSelected()
-        //{
-        //    SimulateBuyingColaNotEnoughCredit();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayInsertCoinIfThePriceHasBeenDisplayedAlreadyWhenCandyIsSelected()
-        //{
-        //    SimulateBuyingCandyNotEnoughCredit();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenColaIsSelected()
-        //{
-        //    SimulateBuyingColaNotEnoughCredit();
-
-        //    machine.CheckDisplay();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenChipsIsSelected()
-        //{
-        //    SimulateBuyingChipsNotEnoughCredit();
-
-        //    machine.CheckDisplay();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
-
-        //[Fact]
-        //public void SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayedWhenCandyIsSelected()
-        //{
-        //    SimulateBuyingCandyNotEnoughCredit();
-
-        //    machine.CheckDisplay();
-
-        //    machine.CheckDisplay();
-
-        //    Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
-        //}
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
