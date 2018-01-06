@@ -114,7 +114,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsNotAbleToGiveChangeItShouldReturnFalse()
         {
-            bool changeAvailable = coinManager.CheckIfChangeIsAvailable();
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(colaValue, chipsValue, candyValue);
 
             Assert.False(changeAvailable);
         }
@@ -122,7 +122,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheMachineIsAbleToGiveChangeItShouldReturnTrue()
         {
-            bool changeAvailable = coinManager.CheckIfChangeIsAvailable();
+            bool changeAvailable = coinManager.CheckIfChangeIsAvailable(colaValue, chipsValue, candyValue));
 
             Assert.True(changeAvailable);
         }
