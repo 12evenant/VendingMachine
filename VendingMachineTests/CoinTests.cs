@@ -94,7 +94,7 @@ namespace VendingMachineTests
 
             coinManager.ReturnCoins(totalCoinValue);
 
-            decimal valueOfBankAfter = machine.GetValueOfBank();
+            decimal valueOfBankAfter = coinManager.GetValueOfBank();
             Assert.Equal(valueOfBankBefore , valueOfBankAfter);
         }
 
