@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace VendingMachine.Products
 {
-    public interface IProduct
+    public class SelectedProduct
     {
-        decimal GetPrice();
-
-        int GetStock();
-
-        void RemoveStock();
-
-        bool Dispense();
+        public int Stock { get; set; }
+        public decimal Price { get; set; }
     }
 }

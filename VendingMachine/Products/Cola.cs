@@ -9,9 +9,9 @@ namespace VendingMachine.Products
     public class Cola : ProductBase
     {
         private static int _stock = 2;
-        public decimal Price => (decimal) 1.00;
+        private static readonly decimal _price = (decimal) 1.00;
 
-        public Cola() : base(_stock)
+        public Cola() : base(_stock, _price)
         {
             
         }
