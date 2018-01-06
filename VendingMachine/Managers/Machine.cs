@@ -173,7 +173,10 @@ namespace VendingMachine.Managers
             {
                 ResetDispenser();
             }
-            
+            else
+            {
+                CurrentDisplay = CurrentValue.ToString(CultureInfo.InvariantCulture);
+            }
         }
 
         private void SoldOutState()
