@@ -196,6 +196,20 @@ namespace VendingMachineTests
 
         [Theory]
         [ClassData(typeof(ProductSelector))]
+        public void
+            SubsequentDisplayChecksWillDisplayTheCurrentAmountIfThePriceHasBeenDisplayedAndInsertCoinHasBeenDisplayed(
+            ProductType product, decimal value)
+        {
+            SimulateSelectingProductNotEnoughCredit(product, value);
+            machine.CheckDisplay();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+        }
+
+        [Theory]
+        [ClassData(typeof(ProductSelector))]
         public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoin(
             ProductType product, decimal value)
         {
@@ -240,6 +254,12 @@ namespace VendingMachineTests
         private void SimulateProductSold(ProductType product, decimal value)
         {
             machine.CurrentValue = value;
+            machine.SelectProduct(product);
+        }
+
+        private void SimulateSelectingProductNotEnoughCredit(ProductType product, decimal value)
+        {
+            machine.CurrentValue = dimeValue;
             machine.SelectProduct(product);
         }
     }
