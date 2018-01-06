@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VendingMachine.Enums;
 
 namespace VendingMachine.Managers
 {
@@ -51,8 +52,32 @@ namespace VendingMachine.Managers
 
         public decimal GetValueOfBank()
         {
-            throw new NotImplementedException();
+            decimal quarterValue = GetValueOfQuartersInBank();
+            decimal dimeValue = GetValueOfDimesInBank();
+            decimal nickelValue = GetValueOfNickels();
+
+            return quarterValue + dimeValue + nickelValue;
         }
 
+        private decimal GetValueOfQuartersInBank()
+        {
+            List<CoinType> quarters = CoinBank.Where(c => c == CoinType.Quarter).ToList();
+
+            return quarters.Count*QuarterConstants.QUARTER_VALUE;
+        }
+
+        private decimal GetValueOfDimesInBank()
+        {
+            List<CoinType> dimes = CoinBank.Where(c => c == CoinType.Dime).ToList();
+
+            return dimes.Count*DimeConstants.DIME_VALUE;
+        }
+
+        private decimal GetValueOfNickels()
+        {
+            List<CoinType> nickels = CoinBank.Where(c => c == CoinType.Nickel).ToList();
+
+            return nickels.Count*NickelConstants.NICKEL_VALUE;
+        }
     }
 }
