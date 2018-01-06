@@ -223,6 +223,8 @@ namespace VendingMachineTests
         {
             SimulateColaGoingOutOfStock();
 
+            machine.ReturnButtonPressed();
+
             machine.CheckDisplay();
 
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
@@ -233,6 +235,8 @@ namespace VendingMachineTests
         {
             SimulateChipsGoingOutOfStock();
 
+            machine.ReturnButtonPressed();
+
             machine.CheckDisplay();
 
             Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
@@ -242,6 +246,8 @@ namespace VendingMachineTests
         public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCandy()
         {
             SimulateCandyGoingOutOfStock();
+
+            machine.ReturnButtonPressed();
 
             machine.CheckDisplay();
 
@@ -257,7 +263,7 @@ namespace VendingMachineTests
 
             machine.CheckDisplay();
 
-            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
 
         [Fact]
@@ -269,7 +275,7 @@ namespace VendingMachineTests
 
             machine.CheckDisplay();
 
-            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
 
         [Fact]
@@ -281,7 +287,7 @@ namespace VendingMachineTests
 
             machine.CheckDisplay();
 
-            Assert.Equal(dimeValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
+            Assert.Equal(machine.CurrentValue.ToString(CultureInfo.InvariantCulture), machine.CurrentDisplay);
         }
 
         #endregion
