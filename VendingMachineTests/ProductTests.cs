@@ -216,13 +216,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCola()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
-
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateColaGoingOutOfStock();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
@@ -230,13 +224,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForChips()
         {
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
-
-            machine.CurrentValue = chipsValue;
-            machine.ChipsSelected();
+            SimulateChipsGoingOutOfStock();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
@@ -244,13 +232,7 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockItWillDisplaySoldOutForCandy()
         {
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
-
-            machine.CurrentValue = candyValue;
-            machine.CandySelected();
+            SimulateCandyGoingOutOfStock();
 
             Assert.Equal(SOLD_OUT_DISPLAY, machine.CurrentDisplay);
         }
@@ -258,13 +240,27 @@ namespace VendingMachineTests
         [Fact]
         public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCola()
         {
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            SimulateColaGoingOutOfStock();
 
-            machine.CurrentValue = colaValue;
-            machine.ColaSelected();
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForChips()
+        {
+            SimulateChipsGoingOutOfStock();
+
+            machine.CheckDisplay();
+
+            Assert.Equal(DEFAULT_DISPLAY, machine.CurrentDisplay);
+        }
+
+        [Fact]
+        public void WhenTheItemSelectedByCustomerIsOutOfStockAndDisplayIsCheckedItWillDisplayInsertCoinForCandy()
+        {
+            SimulateCandyGoingOutOfStock();
 
             machine.CheckDisplay();
 
@@ -273,6 +269,38 @@ namespace VendingMachineTests
 
         #region Helper Methods
 
+        private void SimulateColaGoingOutOfStock()
+        {
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+
+            machine.CurrentValue = colaValue;
+            machine.ColaSelected();
+        }
+
+        private void SimulateChipsGoingOutOfStock()
+        {
+            machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
+            machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
+
+            machine.CurrentValue = chipsValue;
+            machine.ChipsSelected();
+        }
+
+        private void SimulateCandyGoingOutOfStock()
+        {
+            machine.CurrentValue = candyValue;
+            machine.CandySelected();
+            machine.CurrentValue = candyValue;
+            machine.CandySelected();
+
+            machine.CurrentValue = candyValue;
+            machine.CandySelected();
+        }
         #endregion
 
 
