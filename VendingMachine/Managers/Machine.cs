@@ -162,27 +162,31 @@ namespace VendingMachine.Managers
 
         public void CheckDisplay()
         {
-            if (_soldOutShown && CurrentValue == 0)
-            {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-            }
-            else if (_soldOutShown && CurrentValue > 0)
-            {
-                CurrentDisplay = CurrentValue.ToString();
-            }
-            else if (_productRecentlyDispensed)
-            {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-
-                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
-
-                _productRecentlyDispensed = false;
-            }
-            else
-            {
-                
-            }
+            
         }
+        //public void CheckDisplay()
+        //{
+        //    if (_soldOutShown && CurrentValue == 0)
+        //    {
+        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+        //    }
+        //    else if (_soldOutShown && CurrentValue > 0)
+        //    {
+        //        CurrentDisplay = CurrentValue.ToString();
+        //    }
+        //    else if (_productRecentlyDispensed)
+        //    {
+        //        CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
+
+        //        CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+
+        //        _productRecentlyDispensed = false;
+        //    }
+        //    else
+        //    {
+                
+        //    }
+        //}
 
         private void UpdateDisplayToPrice(decimal price)
         {
