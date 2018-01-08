@@ -73,8 +73,7 @@ namespace VendingMachine.Managers
 
             if (coinReturned)
             {
-                CurrentDisplay = DisplayStringConstants.DEFAULT_DISPLAY;
-                CurrentValue = DefaultValueConstants.DEFAULT_VALUE;
+                ResetDispenser();
             }
         }
 
